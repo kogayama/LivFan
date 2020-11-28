@@ -1,0 +1,307 @@
+// mixin
+
+@mixin account-btn() {
+  width: 100%;
+  margin: 60px 0 0;
+  line-height: 48px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+}
+
+@mixin account-main() {
+  width: 700px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+@mixin account-title() {
+  font-size: 22px;
+  padding: 32px;
+  text-align: center;
+  border-bottom: 1px solid #f5f5f5;
+  font-weight: 600;
+}
+
+// アカウントページ全般
+
+.AccountPage  {
+  background-color: #f5f5f5;
+}
+
+.AccountPage__header {
+  height: 128px;
+  text-align: center;
+  padding-top: 45px;
+}
+
+.AccountPage__header img {
+  width: 185px;
+  height: 49px;
+}
+
+.FormField {
+  &:not(:first-of-type) {
+    margin-top: 28px;
+  }
+  &__label{
+    font-size: 14px;
+    font-weight: 600;
+  }
+  &__input {
+    width: 100%;
+    margin: 8px 0 0;
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+}
+
+.SigninPage-notification {
+  color: red;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+  .alert {
+    color: red;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+}
+
+
+// 新規登録ページ
+
+.SignupPage__main {
+  @include account-main();
+  .SignupPage__main__title {
+    @include account-title();
+  }
+  .SignupPage__main__form {
+    padding: 40px 40px 90px;
+    &--content {
+      max-width: 345px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.form-require {
+  background-color: #ea352d;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+}
+.Signup-button {
+  @include account-btn();
+}
+
+.password-info-text {
+  margin: 8px 0 8px;
+  color: #888;
+  font-size: 14px;
+}
+
+input[type=checkbox] {
+  -ms-transform: scale(1.4, 1.4);
+  -webkit-transform: scale(1.4, 1.4);
+  transform: scale(1.4, 1.4);
+}
+
+.password-checkbox label {
+  padding: 0 0 0 8px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.confirmation-title {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
+
+.confirmation-text {
+  padding: 8px 0 0;
+  font-size: 14px;
+  color: #333;
+}
+.ProfileNew {
+  display: flex;
+}
+
+.ProfileNew__form:first-of-type {
+  margin-right: 15px;
+}
+
+.year, .month, .day {
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+  width: 100%;
+}
+.birthday-line {
+  align-items: center;
+}
+
+.AccountPage_error-message {
+  color: red;
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+// ログインページ
+
+.SigninPage__main {
+  width: 450px;
+  margin: 0 auto;
+  background-color: #fff;
+
+  .SigninPage__main__nothing {
+    font-size: 14px;
+    padding: 40px 65px;
+    text-align: center;
+    border-bottom: 1px solid #f5f5f5;
+    
+    .link-signup {
+      display: block;
+      margin: 8px 0 0;
+      border-radius: 4px;
+      background-color: #0099e8;
+      color: #fff;
+      line-height: 40px;
+    }
+  }
+
+  .SigninPage__main__sns {
+    padding: 30px 65px;
+    .btn-normal {
+      display: block;
+      width: 100%;
+      line-height: 48px;
+      font-size: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+      margin: 16px 0 0;
+      position: relative;
+    }
+    .with-google {
+      background-color: #fff;
+      border: 1px solid #979797;
+      color: #000;
+    }
+    .with-facebook {
+      background-color: #385185;
+      border: 1px solid;
+      color: #fff;
+    }
+    .with-apple {
+      background-color: #000;
+      border: 1px solid;
+      color: #fff;
+    }
+
+    .icon-sns {
+      font-size: 18px;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+    }
+  }
+
+  .SigninPage__main__form {
+    padding: 20px 65px 35px;
+    &--content {
+      max-width: 350px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.Signin-button {
+  @include account-btn();
+  margin-bottom: 40px;
+}
+
+.forgot-password {
+  color: #0099e8;
+  font-size: 14px;
+}
+
+// パスワード再登録ページ
+
+.PasswordPage__main {
+  @include account-main();
+  .PasswordPage__main__title {
+    @include account-title();
+  }
+  .PasswordPage__main__form {
+    padding: 40px 40px 90px;
+    &--content {
+      max-width: 320px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.passwordreset-notice {
+  font-size: 12px;
+  margin: 8px 0 0;
+  color: #888;
+
+}
+
+.Password-button {
+  @include account-btn();
+}
+
+.AccountPage__footer {
+  &__top{
+    background-color: #f5f5f5;
+    height: 54px;
+    text-align: center;
+    vertical-align: baseline;
+  }
+  &__lists{
+    display: flex;
+    justify-content: center;
+    &__link{
+      text-decoration: none;
+      color: black;
+      margin: 16px 0px 0px 16px;
+      font-size: 12px;
+    }
+  }
+  &__image{
+    background-color: #f5f5f5;
+    height: 128px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 36px;
+    text-decoration: none;
+    &__copyright{
+      font-size: 12px;
+      box-sizing: border-box;
+      color:black;
+    }
+  }
+}

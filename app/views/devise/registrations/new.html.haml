@@ -1,21 +1,47 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.AccountPage
+  .AccountPage__header
+  .SignupPage__main
+    .SignupPage__main__title 会員情報入力
+
+    .SignupPage__main__form
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+
+        .SignupPage__main__form--content
+          .FormField
+            = f.label :nickname, class: "FormField__label"
+            %span.form-require 必須
+            = f.text_field :nickname, autofocus: true, placeholder: "例）フリマ太朗", class: "FormField__input"
+            - if resource.errors.include?(:nickname)
+              %p.AccountPage_error-message= resource.errors.full_messages_for(:nickname).first 
+
+          .FormField
+            = f.label :email, class: "FormField__label"
+            %span.form-require 必須
+            = f.email_field :email, placeholder: "PC・携帯どちらでも可", class: "FormField__input"  
+            - if resource.errors.include?(:email)
+              %p.AccountPage_error-message= resource.errors.full_messages_for(:email).first
+          .FormField
+            = f.label :password, class: "FormField__label"
+            %span.form-require 必須
+            = f.password_field :password, autocomplete: "off", placeholder: "8文字以上の半角英数字", class: "FormField__input password"
+            - if resource.errors.include?(:password)
+              %p.AccountPage_error-message= resource.errors.full_messages_for(:password).first
+          .FormField
+            = f.label :password_confirmation, class: "FormField__label"
+            %span.form-require 必須
+            = f.password_field :password_confirmation, autocomplete: "off", placeholder: "8文字以上の半角英数字", class: "FormField__input password"
+            - if resource.errors.include?(:password_confirmation)
+              %p.AccountPage_error-message= resource.errors.full_messages_for(:password_confirmation).first
+            %p.password-info-text ※英字と数字の両方を含めて設定してください
+            .password-checkbox
+              %input#password-check{:type => "checkbox"}
+              %label{for: "js-passcheck"} パスワードを表示する
+
+          .FormField
+            %h3.confirmation-title 本人確認
+            %p.confirmation-text 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+
+          
+          .actions
+            = f.submit "登録する", class: 'Signup-button'        
+

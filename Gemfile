@@ -58,3 +58,7 @@ gem 'devise'
 gem 'bootstrap', '~> 4.5.0'
 
 gem "haml-rails", ">= 1.0", '<= 2.0.1'
+
+gem 'font-awesome-sass'
+
+gem 'jquery-rails'
