@@ -1,0 +1,39 @@
+//AVATAR-IMAGE
+.avatar_small {
+  width: 30px;
+  height: 30px;
+}
+
+.avatar_medium {
+  width: 50px;
+  height: 50px;
+}
+
+.avatar_large {
+  width: 70px;
+  height: 70px;
+}
+
+.avatar_full {
+  width: 100%;
+  height: 100%;
+}
+
+// NAVBARS
+.navbar-light {
+  background-color: #FFFFFF;
+}
+
+.navbar-light .navbar-brand {
+  color: black;
+  font-size: 2.3em;
+  font-weight: 400;
+  font-family: 'Lobster'
+}
+
+.nav-user-info {
+  display: flex;
+  align-items: center;
+  width: 150px;
+  justify-content: space-around;
+}
