@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get '/', to: "homes#top"
+  root to: "homes#top"
   devise_for :users
   resources :users do
     member do
-      get 'top'
+      get 'mypage'
     end
   end
 

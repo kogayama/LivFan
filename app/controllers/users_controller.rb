@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-
-  def top
+  before_action :authenticate_user!
+  def mypage
     @user = User.find(params[:id])
   end
   
