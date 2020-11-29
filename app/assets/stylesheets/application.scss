@@ -4,3 +4,15 @@
 @import "bootstrap";
 @import "modules/devise";
 @import "modules/shared";
+
+
+body {
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.contents {
+  padding: 0 60px;
+}
+
+
