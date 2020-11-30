@@ -74,29 +74,5 @@
               - if @room.errors.include?(:price)
                 %p.FormField_error-message= @room.errors.full_messages_for(:price).first
 
-            = f.label :is_tv, class: "FormField__label"
-            = f.check_box :is_tv
-
-            = f.label :is_kitchen, class: "FormField__label"
-            = f.check_box :is_kitchen
-
-            = f.label :is_air, class: "FormField__label"
-            = f.check_box :is_air
-
-            = f.label :is_heater, class: "FormField__label"
-            = f.check_box :is_heater
-
-            = f.label :is_wifi, class: "FormField__label"
-            = f.check_box :is_wifi
-
-            = f.label :pet, class: "FormField__label"
-            = f.check_box :pet
-
-            = f.label :parking, class: "FormField__label"
-            = f.check_box :parking
-
-            = f.label :breakfast, class: "FormField__label"
-            = f.check_box :breakfast
-
             .FormField__btn
               = f.submit class: 'Btn-form'
