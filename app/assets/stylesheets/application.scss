@@ -4,6 +4,7 @@
 @import "bootstrap";
 @import "modules/devise";
 @import "modules/shared";
+@import "rooms/new";
 
 
 body {
@@ -13,6 +14,18 @@ body {
 
 .contents {
   padding: 0 60px;
+}
+
+select {
+  width: 100%;
+  margin: 8px 0 0;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
 }
 
 
