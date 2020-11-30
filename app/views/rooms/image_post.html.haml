@@ -5,12 +5,12 @@
   .col-md-7
     
     .col-md-9
-      .card
-        .card-header
+      .RoomImage
+        .RoomImage-header
           写真
-        .card-body
+        .RoomImage-body
           .container
-            .row.PhotoUpload-row
+            .row.RoomImage-row
               .col-md-offset-3.col-md-6
                 = form_with url: room_room_images_path(@room), method: 'post', html: {multipart: true} do |f|
                   .row
@@ -20,3 +20,13 @@
                         = file_field_tag "images[]", type: :file, multiple: true
                   .FormField__btn.text-center
                     = f.submit "写真を追加", class: "btn btn-form"
+                  #images
+                    - if @room_images.count
+                      .row
+                        - @room_images.each do |image|
+                          .PhotoUpload_contents
+                            = image_tag image.image.url(), class: "PhotoUpload-img"
+                            %p
+                              = link_to room_room_image_path(image.room_id, image), remote: true, method: :delete, data: {confirm: "本当によろしいですか？"} do
+                                %i.far.fa-trash-alt
+
