@@ -30,21 +30,21 @@
         .FormField
           = f.label :member, class: "FormField__label"
           %span.FormField__require 必須
-          = f.select :member, [["1", 1], ["2", 2], ["3", 3], ["4+", 4]], include_blank: "選択して下さい"
+          = f.select :member, [["1名", 1], ["2名", 2], ["3名", 3], ["4名以上", 4]], include_blank: "選択して下さい"
           - if @room.errors.include?(:member)
             %p.FormField_error-message= @room.errors.full_messages_for(:member).first
 
         .FormField
           = f.label :bed, class: "FormField__label"
           %span.FormField__require 必須
-          = f.select :bed, [["1", 1], ["2", 2], ["3", 3], ["4+", 4]], include_blank: "選択して下さい"
+          = f.select :bed, [["1つ", 1], ["2つ", 2], ["3つ", 3], ["4つ以上", 4]], include_blank: "選択して下さい"
           - if @room.errors.include?(:bed)
             %p.FormField_error-message= @room.errors.full_messages_for(:bed).first
 
         .FormField
           = f.label :bath, class: "FormField__label"
           %span.FormField__require 必須
-          = f.select :bath, [["1", 1], ["2", 2], ["3", 3], ["4+", 4]], include_blank: "選択して下さい"
+          = f.select :bath, [["1つ", 1], ["2つ", 2], ["3つ", 3], ["4つ以上", 4]], include_blank: "選択して下さい"
           - if @room.errors.include?(:bath)
             %p.FormField_error-message= @room.errors.full_messages_for(:bath).first
 
@@ -62,13 +62,12 @@
           - if @room.errors.include?(:location)
             %p.FormField_error-message= @room.errors.full_messages_for(:location).first
 
-        
+        .FormField
+          = f.label :price, class: "FormField__label"
+          %span.FormField__require 必須
+          = f.text_field :price, :placeholder => "40文字まで", class: 'FormField__input'
+          - if @room.errors.include?(:price)
+            %p.FormField_error-message= @room.errors.full_messages_for(:price).first
 
-        
-
-
-
-            
-
-
-  
+        .FormField__btn
+          = f.submit class: 'Btn-form'

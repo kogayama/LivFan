@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2020_11_29_165531) do
     t.string "home_type", null: false
     t.string "room_type", null: false
     t.integer "member", null: false
+    t.integer "price", null: false
     t.integer "bed", null: false
     t.integer "bath", null: false
     t.string "name", null: false

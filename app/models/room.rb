@@ -4,6 +4,7 @@ class Room < ApplicationRecord
   validates :home_type, presence: true
   validates :room_type, presence: true
   validates :member, presence: true
+  validates :price, presence: true
   validates :bed, presence: true
   validates :bath, presence: true
   validates :name, presence: true
