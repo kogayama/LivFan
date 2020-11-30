@@ -1,0 +1,74 @@
+.RoomNew
+  .RoomNew__header
+    .RoomNew__header__title
+
+  .RoomNew__main
+    = form_with model: @room, url:rooms_path, local: true do |f|
+    
+      .RoomNew__main__contents
+        .FormField
+          = f.label :name, class: "FormField__label"
+          %span.FormField__require 必須
+          = f.text_field :name, :placeholder => "40文字まで", class: 'FormField__input'
+          - if @room.errors.include?(:name)
+            %p.FormField_error-message= @room.errors.full_messages_for(:name).first
+
+        .FormField
+          = f.label :home_type, class: "FormField__label"
+          %span.FormField__require 必須
+          = f.select :home_type, [["住宅", "住宅"], ["アパート", "アパート"], ["ホテル", "ホテル"]], include_blank: "選択して下さい"
+          - if @room.errors.include?(:home_type)
+            %p.FormField_error-message= @room.errors.full_messages_for(:home_type).first
+
+        .FormField
+          = f.label :room_type, class: "FormField__label"
+          %span.FormField__require 必須
+          = f.select :room_type, [["個室", "個室"], ["シェアルーム", "シェアルーム"], ["貸し切り", "貸し切り"]], include_blank: "選択して下さい"
+          - if @room.errors.include?(:room_type)
+            %p.FormField_error-message= @room.errors.full_messages_for(:room_type).first
+
+        .FormField
+          = f.label :member, class: "FormField__label"
+          %span.FormField__require 必須
+          = f.select :member, [["1", 1], ["2", 2], ["3", 3], ["4+", 4]], include_blank: "選択して下さい"
+          - if @room.errors.include?(:member)
+            %p.FormField_error-message= @room.errors.full_messages_for(:member).first
+
+        .FormField
+          = f.label :bed, class: "FormField__label"
+          %span.FormField__require 必須
+          = f.select :bed, [["1", 1], ["2", 2], ["3", 3], ["4+", 4]], include_blank: "選択して下さい"
+          - if @room.errors.include?(:bed)
+            %p.FormField_error-message= @room.errors.full_messages_for(:bed).first
+
+        .FormField
+          = f.label :bath, class: "FormField__label"
+          %span.FormField__require 必須
+          = f.select :bath, [["1", 1], ["2", 2], ["3", 3], ["4+", 4]], include_blank: "選択して下さい"
+          - if @room.errors.include?(:bath)
+            %p.FormField_error-message= @room.errors.full_messages_for(:bath).first
+
+        .FormField
+          = f.label :introduction, class: "FormField__label"
+          %span.FormField__require 必須
+          = f.text_field :introduction, :placeholder => "40文字まで", class: 'FormField__input'
+          - if @room.errors.include?(:introduction)
+            %p.FormField_error-message= @room.errors.full_messages_for(:introduction).first
+
+        .FormField
+          = f.label :location, class: "FormField__label"
+          %span.FormField__require 必須
+          = f.text_field :location, :placeholder => "40文字まで", class: 'FormField__input'
+          - if @room.errors.include?(:location)
+            %p.FormField_error-message= @room.errors.full_messages_for(:location).first
+
+        
+
+        
+
+
+
+            
+
+
+  
