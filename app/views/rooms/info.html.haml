@@ -8,7 +8,7 @@
         .RoomNew__header__title
 
       .RoomNew__main
-        = form_with model: @room, url:rooms_path, local: true do |f|
+        = form_with model: @room do |f|
         
           .RoomNew__main__contents
             .FormField

@@ -1,1 +1,23 @@
-aaaa
+.MyRoom
+
+  .MyRoom__image
+    = image_tag @room.room_images[0].image.url
+    
+  .MyRoom__title
+    .MyRoom__title__left
+      .MyRoom__title__left__name
+        = @room.name
+      .MyRoom__title__left__introduction
+        = @room.introduction
+    .MyRoom__title__right
+      .MyRoom__title__right__price
+        =@room.price
+  .MyRoom__info
+
+  .MyRoom__facility
+
+  .MyRoom__location
+
+  .MyRoom__images
+
+  

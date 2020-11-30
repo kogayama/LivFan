@@ -11,15 +11,16 @@
     =render 'modules/sidebar'
   
   .col-md-7
-    .Roomlist
-      - @rooms.each do |room|
-        .Roomlist__image
-          - if room.room_images.length > 0
-            =image_tag room.room_images[0].image.url, class: "avatar_large"
-          - else
-            =image_tag "no-image.png", class: "avatar_large"
-        .Roomlist__title
-          =room.name
-        .Roomlist__edit
+    - @rooms.each do |room|
+      .Roomlist
+        .Roomlist__left
+          .Roomlist__left__image
+            - if room.room_images.length > 0
+              =image_tag room.room_images[0].image.url, class: "avatar_large"
+            - else
+              =image_tag "no-image.png", class: "avatar_large"
+          .Roomlist__left__title
+            =room.name
+        .Roomlist__right
           = link_to info_room_path(room) do
-            編集
+            .Roomlist__edit 編集
