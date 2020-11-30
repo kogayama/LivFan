@@ -10,15 +10,15 @@ class CreateRooms < ActiveRecord::Migration[6.0]
       t.string :name, null: false
       t.text :introduction, null: false
       t.string :location, null: false
-      t.boolean :is_tv
-      t.boolean :is_kitchen
-      t.boolean :is_air
-      t.boolean :is_heater
-      t.boolean :is_wifi
-      t.boolean :active
-      t.boolean :pet
-      t.boolean :parking
-      t.boolean :breakfast
+      t.boolean :is_tv, default: false, null: false
+      t.boolean :is_kitchen, default: false, null: false
+      t.boolean :is_air, default: false, null: false
+      t.boolean :is_heater, default: false, null: false
+      t.boolean :is_wifi, default: false, null: false
+      t.boolean :done, default: false, null: false
+      t.boolean :pet, default: false, null: false
+      t.boolean :parking, default: false, null: false
+      t.boolean :breakfast, default: false, null: false
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_29_165531) do
+ActiveRecord::Schema.define(version: 2020_11_30_050354) do
+
+  create_table "room_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "room_id", null: false
+    t.string "image", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_room_images_on_room_id"
+  end
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "home_type", null: false
@@ -22,15 +30,15 @@ ActiveRecord::Schema.define(version: 2020_11_29_165531) do
     t.string "name", null: false
     t.text "introduction", null: false
     t.string "location", null: false
-    t.boolean "is_tv"
-    t.boolean "is_kitchen"
-    t.boolean "is_air"
-    t.boolean "is_heater"
-    t.boolean "is_wifi"
-    t.boolean "active"
-    t.boolean "pet"
-    t.boolean "parking"
-    t.boolean "breakfast"
+    t.boolean "is_tv", default: false, null: false
+    t.boolean "is_kitchen", default: false, null: false
+    t.boolean "is_air", default: false, null: false
+    t.boolean "is_heater", default: false, null: false
+    t.boolean "is_wifi", default: false, null: false
+    t.boolean "done", default: false, null: false
+    t.boolean "pet", default: false, null: false
+    t.boolean "parking", default: false, null: false
+    t.boolean "breakfast", default: false, null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -51,5 +59,6 @@ ActiveRecord::Schema.define(version: 2020_11_29_165531) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "room_images", "rooms"
   add_foreign_key "rooms", "users"
 end

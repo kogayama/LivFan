@@ -1,0 +1,26 @@
+
+.row
+  .col-md-3
+    .Accountcard
+      .Accountcard__main
+        = image_tag "no-image.png", class: "Accountcard__main--image avatar_large"
+        .Accountcard__main__right
+          %h5=current_user.nickname
+          = link_to "#", class: "Accountcard__main__right--profile" do
+            プロフィール確認
+    =render 'modules/sidebar'
+  
+  .col-md-7
+    - @rooms.each do |room|
+      .Roomlist
+        .Roomlist__left
+          .Roomlist__left__image
+            - if room.room_images.length > 0
+              =image_tag room.room_images[0].image.url, class: "avatar_large"
+            - else
+              =image_tag "no-image.png", class: "avatar_large"
+          .Roomlist__left__title
+            =room.name
+        .Roomlist__right
+          = link_to info_room_path(room) do
+            .Roomlist__edit 編集
