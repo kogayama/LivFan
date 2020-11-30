@@ -7,6 +7,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :rooms
+  resources :rooms do
+    member do
+      get 'info'
+      get 'facility'
+      get 'image_post'
+    end
+  end
+    
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
