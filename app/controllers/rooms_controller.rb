@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
 
-  before_action :set_room, only: [:edit, :show, :info, :facility, :image_post]
+  before_action :set_room, only: [:edit, :update, :show, :info, :facility, :image_post]
 
   def index
 
@@ -23,6 +23,12 @@ class RoomsController < ApplicationController
   end
 
   def update
+    if @room.update(room_params)
+      flash[:notice] = "保存しました"
+    else
+      flash[:alert] = "間違いがあります"
+    end
+    redirect_back(fallback_location: request.referer)
   end
 
   def destroy
