@@ -38,6 +38,7 @@ class RoomsController < ApplicationController
   end
 
   def image_post
+    @room_images = @room.room_images
   end
 
   private
