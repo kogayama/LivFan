@@ -21,6 +21,7 @@ class BooksController < ApplicationController
     redirect_to room
   end
 
+
   private
     def book_params
       params.require(:book).permit(:start_date, :end_date)

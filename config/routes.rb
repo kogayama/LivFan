@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get 'mypage'
+      get 'mybook'
+      get 'be_booked'
     end
   end
 

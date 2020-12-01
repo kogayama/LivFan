@@ -4,19 +4,26 @@
     マイページトップ
   = link_to new_room_path, class: "list-group-item list-group-item-action" do
     部屋を投稿する
-  = link_to '#', class: "list-group-item list-group-item-action" do
-    予約リスト
-  = link_to '#', class: "list-group-item list-group-item-action" do
-    過去の旅
+  = link_to be_booked_user_path(current_user), class: "list-group-item list-group-item-action" do
+    受取予約リスト
   = link_to rooms_path(@rooms), method: :get, class: "list-group-item list-group-item-action" do
     あなたの部屋
-  = link_to "#", class: "list-group-item list-group-item-action" do
-    お気に入り
-  = link_to '#', class: "list-group-item list-group-item-action" do
-    設定
 
-.list-group
+.list-group.mb-4
   
   = link_to root_path, class: "list-group-item list-group-item-action" do
     家具を購入
-  
+  = link_to mybook_user_path(current_user), class: "list-group-item list-group-item-action" do
+    旅リスト
+  = link_to '#', class: "list-group-item list-group-item-action" do
+    過去の旅
+  = link_to "#", class: "list-group-item list-group-item-action" do
+    お気に入り
+
+.list-group
+  = link_to '#', class: "list-group-item list-group-item-action" do
+    お知らせ
+  = link_to '#', class: "list-group-item list-group-item-action" do
+    ヘルプ
+  = link_to '#', class: "list-group-item list-group-item-action" do
+    設定
