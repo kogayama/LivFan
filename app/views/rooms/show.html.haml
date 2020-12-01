@@ -12,6 +12,12 @@
     .MyRoom__title__right
       .MyRoom__title__right__price
         =@room.price
+      .MyRoom__title__right__book
+        = form_for([@room, @room.books.new]) do |f|
+          .MyRoom__title__right__book__form
+            = f.text_field :start_date, placeholder: "宿泊開始日"
+            = f.text_field :end_date, placeholder: "宿泊終了日"
+            =f.submit
   .MyRoom__info
 
   .MyRoom__facility

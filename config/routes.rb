@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get 'mypage'
+      get 'mybook'
+      get 'be_booked'
     end
   end
 
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
       get 'image_post'
     end
     resources :room_images, only: [:create, :destroy]
+    resources :books, only: [:create]
   end
 
   
