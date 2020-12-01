@@ -1,0 +1,10 @@
+.Accountcard
+  .Accountcard__main
+    - if current_user.image.blank?
+      = image_tag "no-image.png", class: "avatar_large"
+    - else
+      = image_tag current_user.image.url, class: "avatar_large"
+    .Accountcard__main__right
+      %h5=current_user.nickname
+      = link_to "#", class: "Accountcard__main__right--profile" do
+        プロフィール確認
