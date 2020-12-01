@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get 'image_post'
     end
     resources :room_images, only: [:create, :destroy]
+    resources :books, only: [:create]
   end
 
   
