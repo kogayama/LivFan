@@ -1,7 +1,6 @@
 class RoomImagesController < ApplicationController
 
   def create
-    
     @room = Room.find(params[:room_id])
     if params[:images]
      
