@@ -1,7 +1,8 @@
 .MyRoom
 
   .MyRoom__image
-    = image_tag @room.room_images[0].image.url
+    - @room_images.each do |image|
+      = image_tag image.image.url
     
   .MyRoom__title
     .MyRoom__title__left
