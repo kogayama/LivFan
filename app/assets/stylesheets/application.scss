@@ -4,10 +4,10 @@
 @import "bootstrap";
 @import "modules/devise";
 @import "modules/shared";
+@import "modules/review_form";
 @import "rooms/show";
 @import "rooms/new";
 @import "rooms/index";
-
 
 body {
   text-decoration: none;

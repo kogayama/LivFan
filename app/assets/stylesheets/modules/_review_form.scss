@@ -1,0 +1,81 @@
+// Modal
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.content{
+  margin: 0 auto;
+  padding: 40px;
+}
+.modal{
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.modal__bg{
+  background: rgba(0,0,0,0.8);
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+}
+.modal__content{
+  background: #fff;
+  left: 50%;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 60%;
+}
+
+// Form
+
+.ReviewForm {
+  
+  &__contents {
+    display: flex;
+    flex-direction: column;
+
+    &__form{
+      display: flex;
+      flex-direction: column;
+      form {
+        font-size: 12px;
+      }
+    }
+
+    &__header {
+      height: 30px;
+      font-size: 16px;
+      line-height: 30px;
+      justify-content: space-around;
+      float: left;
+      &__label {
+        float: left;
+      }
+      &__require {
+        float: right;
+      }
+    }
+    
+    
+    &__title {
+      line-height: 30px;
+      font-size: 16px;
+    }
+    &__comment {
+      font-size: 16px;
+      line-height: 20px;
+    }
+    &__like {
+      line-height: 40px;
+    }
+  }
+  &__btn {
+    width: 120px;
+  }
+}
