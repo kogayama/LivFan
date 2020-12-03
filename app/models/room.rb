@@ -3,6 +3,7 @@ class Room < ApplicationRecord
   has_many :room_images
   has_many :books
 
+  has_many :guest_reviews
 
   validates :home_type, presence: true
   validates :room_type, presence: true

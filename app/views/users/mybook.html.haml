@@ -3,18 +3,20 @@
     =render 'card'
     =render 'modules/sidebar'
   
-  .col-md-7
+  .col-md-9
     - @mybooks.each do |book|
       .Roomlist
         .Roomlist__left
           .Roomlist__left__image
-            - if book.room.room_images.length > 0
-              =image_tag book.room.room_images[0].image.url, class: "avatar_large"
-            - else
-              =image_tag "no-image.png", class: "avatar_large"
-          .Roomlist__left__title
+            = link_to room_path(book.room.id) do
+              - if book.room.room_images.length > 0
+                =image_tag book.room.room_images[0].image.url, class: "avatar_large"
+              - else
+                =image_tag "no-image.png", class: "avatar_large"
+          = link_to room_path(book.room.id), class: "Roomlist__left__title" do
             =book.room.name
         .Roomlist__right
-          = link_to "#" do
-            .Roomlist__edit  確認
-          
+          = link_to "#", class: "Roomlist__right__edit" do
+            確認
+          .Roomlist__right__review
+            = render 'reviews/guest_review_form'
