@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_043954) do
+ActiveRecord::Schema.define(version: 2020_12_03_014047) do
 
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -23,6 +23,22 @@ ActiveRecord::Schema.define(version: 2020_12_01_043954) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_books_on_room_id"
     t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "comment"
+    t.integer "like", default: 1
+    t.bigint "room_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "guest_id", null: false
+    t.bigint "host_id", null: false
+    t.index ["book_id"], name: "index_reviews_on_book_id"
+    t.index ["guest_id"], name: "index_reviews_on_guest_id"
+    t.index ["host_id"], name: "index_reviews_on_host_id"
+    t.index ["room_id"], name: "index_reviews_on_room_id"
   end
 
   create_table "room_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -76,6 +92,8 @@ ActiveRecord::Schema.define(version: 2020_12_01_043954) do
 
   add_foreign_key "books", "rooms"
   add_foreign_key "books", "users"
+  add_foreign_key "reviews", "books"
+  add_foreign_key "reviews", "rooms"
   add_foreign_key "room_images", "rooms"
   add_foreign_key "rooms", "users"
 end
