@@ -1,0 +1,13 @@
+- @rooms.each do |room|
+  - room.books.each do |book|
+    = form_for (current_user.host_reviews.new) do |f|
+      .FormField
+        = f.text_field :title
+        = f.text_area :comment, rows: 3
+      .FormField
+        = f.text_field :like
+      = f.hidden_field :room_id, value: book.room.id
+      = f.hidden_field :book_id, value: book.id
+      = f.hidden_field :host_id, value: book.user.id
+      .text-center
+        = f.submit
