@@ -15,4 +15,5 @@ class Room < ApplicationRecord
   validates :introduction, presence: true
   validates :location, presence: true
 
+  
 end
