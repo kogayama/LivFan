@@ -12,7 +12,7 @@
 body {
   text-decoration: none;
   box-sizing: border-box;
-  
+
 }
 
 .contents {
@@ -32,3 +32,8 @@ select {
 }
 
 
+
+#map { 
+  height: 500px;
+  width: 500px;
+}
