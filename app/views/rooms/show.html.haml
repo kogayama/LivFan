@@ -3,28 +3,68 @@
   .MyRoom__image
     - @room_images.each do |image|
       = image_tag image.image.url
-    
-  .MyRoom__title
-    .MyRoom__title__left
-      .MyRoom__title__left__name
-        = @room.name
-      .MyRoom__title__left__introduction
-        = @room.introduction
-    .MyRoom__title__right
-      .MyRoom__title__right__price
-        =@room.price
-      .MyRoom__title__right__book
-        = form_for([@room, @room.books.new]) do |f|
-          .MyRoom__title__right__book__form
-            = f.text_field :start_date, placeholder: "宿泊開始日"
-            = f.text_field :end_date, placeholder: "宿泊終了日"
-            =f.submit
-  .MyRoom__info
+  .MyRoom__contents
+    .row
+      .offset-md-1.col-md-7
+        .MyRoom__contents__left
+          .MyRoom__info
+            .MyRoom__info__title
+              = @room.name
+            .MyRoom__info__facility
 
-  .MyRoom__facility
+            .MyRoom__info__introduction
+              = @room.introduction
+              
+            .MyRoom__info__info
+              = render 'icon'
 
-  .MyRoom__location
+            .MyRoom__info__host
+              .Host__info
+                .Host__info__header
+                  ホスト
+                .Host__info__main
+                  .Host__info__main__left
+                    = image_tag @room.user.image.url, class: "avatar_more_large"
+                  .Host__info__main__right
+                    .Host__info__main__right__name
+                      = @room.user.nickname
+                    .Host__info__main__right__review
+                      ☆
+                    .Host__info__main__right__rooms
+                      = "掲載している部屋の数： #{@room.user.rooms.count}部屋"
+                    
+              
 
-  .MyRoom__images
+              
+            .MyRoom__info__location
+
+            .MyRoom__title__left
+              .MyRoom__title__left__name
+                
+              
+            .MyRoom__title__right
+              .MyRoom__title__right__price
+                
+              .MyRoom__title__right__book
+      .col-md-4
+        .MyRoom__contents__right
+          .MyRoom__price
+            = form_for([@room, @room.books.new]) do |f|
+              .MyRoom__title__right__book__form
+                = f.text_field :start_date, placeholder: "宿泊開始日"
+                = f.text_field :end_date, placeholder: "宿泊終了日"
+                =f.submit
+
+
 
   
+
+    
+       
+      
+    
+    
+    
+    
+
+  .MyRoom__images
