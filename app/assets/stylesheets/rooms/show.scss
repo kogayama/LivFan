@@ -174,11 +174,22 @@
           width: 250px;
           margin: 20px auto;
           justify-content: space-between;
-          &__price {
+          &__one {
             display: flex;
             justify-content: space-between;
             border-bottom: 1px solid black;
             line-height: 40px;
+            &:last-of-type {
+              font-weight: 600;
+            }
+          }
+        }
+        &__btn {
+          width: 300px;
+          margin: 20px auto;
+          .BookBtn {
+            height: 40px;
+            width: 100%;
           }
         }
       } 
