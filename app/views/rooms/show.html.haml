@@ -10,7 +10,6 @@
           .MyRoom__info
             .MyRoom__info__title
               = @room.name
-            .MyRoom__info__facility
 
             .MyRoom__info__introduction
               = @room.introduction
@@ -79,7 +78,13 @@
                       = "掲載している部屋の数： #{@room.user.rooms.count}部屋"
  
             .MyRoom__info__location
+              .MyRoom__info__location__address
+                .MyRoom__info__location__address__title
+                  住所
+                .MyRoom__info__location__address__main
+                  = @room.location
               = render 'map'
+              
             .MyRoom__title__left
               .MyRoom__title__left__name
                 
@@ -91,11 +96,22 @@
       .col-md-4
         .MyRoom__contents__right
           .MyRoom__price
+            .MyRoom__price__title
+              宿泊料金
+            .MyRoom__price__main
+              .MyRoom__price__main__price
+                = "￥#{@room.price}/泊"
+              .MyRoom__price__main__member
+                = "(#{@room.member}人まで)"
+              .MyRoom__price__main__check
+                ※時間厳守でお願いします。
+          .MyRoom__book
             = form_for([@room, @room.books.new]) do |f|
-              .MyRoom__title__right__book__form
-                = f.text_field :start_date, placeholder: "宿泊開始日"
-                = f.text_field :end_date, placeholder: "宿泊終了日"
-                =f.submit
+              .MyRoom__book__form
+                = f.text_field :start_date, placeholder: "宿泊開始日", class: "BookForm"
+                = f.text_field :end_date, placeholder: "宿泊終了日", class: "BookForm"
+              .MyRoom__book__btn
+                =f.submit "予約する"
 
 
 
