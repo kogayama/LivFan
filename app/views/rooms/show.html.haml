@@ -106,20 +106,6 @@
               .MyRoom__price__main__check
                 ※時間厳守でお願いします。
           .MyRoom__book
-            = form_for([@room, @room.books.new]) do |f|
-              .MyRoom__book__form
-                #datetimepicker7.input-group.date{"data-target-input" => "nearest"}
-                  = f.text_field :start_date, placeholder: "宿泊開始日", class: 'datetimepicker-input', :"data-target" => "#datetimepicker7"
-                  .input-group-append{"data-target" => "#datetimepicker7", "data-toggle" => "datetimepicker"}
-                    .input-group-text
-                      = icon('fa', 'calendar')
-                  
-                #datetimepicker8.input-group.date{"data-target-input" => "nearest"}
-                  = f.text_field :end_date, placeholder: "宿泊終了日", class: "BookForm", class: 'datetimepicker-input', :"data-target" => "#datetimepicker8"
-                  .input-group-append{"data-target" => "#datetimepicker8", "data-toggle" => "datetimepicker"}
-                    .input-group-text
-                      = icon('fa', 'calendar')
-
-              .MyRoom__book__btn
- 
-  .MyRoom__images
+            = render 'book_form'
+          
+              
