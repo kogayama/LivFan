@@ -8,11 +8,11 @@
 @import "rooms/show";
 @import "rooms/new";
 @import "rooms/index";
+@import "tempusdominus-bootstrap-4.css";
 
 body {
   text-decoration: none;
   box-sizing: border-box;
-
 }
 
 .contents {
@@ -30,8 +30,6 @@ select {
   line-height: 1.5;
   font-size: 16px;
 }
-
-
 
 #map { 
   height: 500px;

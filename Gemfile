@@ -69,3 +69,7 @@ gem 'mini_magick'
 gem 'pry-rails'
 
 gem "geocoder"
+
+gem "bootstrap4-datetime-picker-rails"
+gem 'momentjs-rails'
+gem "font-awesome-rails"
