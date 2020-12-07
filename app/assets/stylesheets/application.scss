@@ -8,6 +8,7 @@
 @import "rooms/show";
 @import "rooms/new";
 @import "rooms/index";
+@import "tempusdominus-bootstrap-4.css";
 
 body {
   text-decoration: none;
@@ -30,4 +31,8 @@ select {
   font-size: 16px;
 }
 
-
+#map { 
+  height: 500px;
+  width: 100%;
+  
+}

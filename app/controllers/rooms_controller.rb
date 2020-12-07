@@ -36,6 +36,7 @@ class RoomsController < ApplicationController
 
   def show
     @room_images = @room.room_images
+    @guest_reviews = @room.guest_reviews
   end
 
   def info

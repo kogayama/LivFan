@@ -14,4 +14,8 @@ class Room < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: true
   validates :location, presence: true
+
+  geocoded_by :location
+  after_validation :geocode, if: :location_changed?
+  
 end

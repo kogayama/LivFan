@@ -1,0 +1,33 @@
+.MyRoom__info__info__one
+  .MyRoom__info__info__icon
+    - if @room.home_type == "住宅"
+      = icon('fas', 'home')
+    - elsif @room.home_type == "アパート"
+      = icon('fas', 'building')
+    - else @room.home_type == "ホテル"
+      = icon('fas', 'hotel')
+  .MyRoom__info__info__foot
+    = @room.home_type
+
+.MyRoom__info__info__one
+  .MyRoom__info__info__icon
+    = icon('fas', 'home')
+  .MyRoom__info__info__foot
+    = @room.room_type
+.MyRoom__info__info__one
+  .MyRoom__info__info__icon
+    = icon('fas', 'user')
+  .MyRoom__info__info__foot
+    ="#{@room.member}名"
+  
+.MyRoom__info__info__one
+  .MyRoom__info__info__icon
+    = icon('fas', 'bath')
+  .MyRoom__info__info__foot
+    = "#{@room.bath}つ"
+ 
+.MyRoom__info__info__one
+  .MyRoom__info__info__icon
+    = icon('fas', 'bed')
+  .MyRoom__info__info__foot
+    = "#{@room.bed}つ"

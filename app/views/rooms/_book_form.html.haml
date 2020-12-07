@@ -1,0 +1,29 @@
+= form_for([@room, @room.books.new]) do |f|
+  .MyRoom__book__title
+    予約フォーム
+  .MyRoom__book__form
+    = f.text_field :start_date, placeholder: "宿泊開始日", class: 'BookForm datetimepicker-input', :"data-target" => "#datetimepicker7", :"data-toggle" => "datetimepicker", id: "datetimepicker7"
+    %span →
+    = f.text_field :end_date, placeholder: "宿泊終了日", class: 'BookForm datetimepicker-input', :"data-target" => "#datetimepicker8", :"data-toggle" => "datetimepicker", id: "datetimepicker8"
+
+  .MyRoom__book__price{style: "display: none"}
+    .MyRoom__book__price__one
+      .MyRoom__book__price__price__right
+        料金
+      .MyRoom__book__price__price__left
+        = "¥#{@room.price}"
+    .MyRoom__book__price__one
+      .MyRoom__book__price__dates__right
+        泊数
+      .MyRoom__book__price__dates__left
+        2泊
+    .MyRoom__book__price__one
+      .MyRoom__book__price__total__right
+        合計金額
+      .MyRoom__book__price__total__left
+        ￥20000
+  
+  .MyRoom__book__btn
+    = f.submit "予約する", class: "BookBtn"
+      
+    

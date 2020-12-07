@@ -1,24 +1,252 @@
 .MyRoom{
   &__image {
-    height: 300px;
+    height: 500px;
+    background-color: black;
+    margin-bottom: 60px;
   }
-  &__title {
-    height: 100px;
-    background-color: #f8f8f8;
-  }
-  &__info {
-    height: 100px;
-  }
-  &__facility {
-    height: 200px;
-    background-color: #f8f8f8;
-  }
-  &__location {
-    height: 400px;
-  }
-  &___images {
-    height: 300px;
-    background-color: #f8f8f8;
+  &__contents {
+    &__left {
+      .MyRoom__info {
 
+        &__title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+        }
+        &__introduction {
+          letter-spacing: 0.5px;
+          line-height: 30px;
+          margin-bottom: 30px;
+          border-bottom: 2px dashed black;
+          padding-bottom: 40px;
+          &-border{
+            border-bottom: 2px dashed black;
+          }
+        }
+        &__info {
+          height: 160px;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          padding-bottom: 20px;
+          &__one {
+            text-align: center;
+          }
+          &__icon {
+            font-size: 40px;
+          }
+          &__foot {
+            font-size: 16px;
+            color: gray;
+          }
+        }
+
+        &__facility {
+          border-bottom: 2px dashed black;
+          padding: 0 60px;
+          padding-bottom: 20px;
+          &__title {
+            margin-bottom: 10px;
+          }
+          &__main {
+            &__one {
+              display: flex;
+              align-items: center;
+              
+              &__font {
+                color: gray;
+                margin-left: 8px;
+              }
+            }
+          }
+        }
+
+        &__host {
+          padding: 20px 40px;
+          border-bottom: 2px dashed black;
+
+          .Host__info {
+            height: 100%;
+            padding: 10px;
+            background: #f7f7f7;
+            &__header {
+              text-align: center;
+              font-weight: bold;
+              font-size: 20px;
+              margin-bottom: 20px;
+            }
+            &__main {
+              display: flex;
+              &__left {
+                margin-right: 40px;
+              }
+              &__right {
+                width: 100%;
+                height: 150px;
+                &__name {
+                  font-weight: bold;
+                  font-size: 25px;
+                }
+              }
+            }
+          }
+        }
+        &__location {
+          &__address {
+            padding: 20px 10px 15px;
+            &__title {
+              font-size: 18px;
+              font-weight: bold;
+            }
+            &__main {
+              margin-left: 25px;
+              font-size: 16px;
+            }
+          }
+          &__map {
+          }
+        }
+        .MyRoom__info__reviews {
+          margin-top: 30px;
+          &__head {
+            display: flex;
+            margin-bottom: 25px;
+            align-items: baseline;
+            &__title {
+              font-size: 20px;
+              font-weight: 700;
+              margin: 0 20px;
+            }
+            &__num {
+
+            }
+          }
+          &__main {
+            display: flex;
+            
+            .Review {
+              padding: 13px;
+              border: 1px solid lightgray;
+              &__head {
+                display: flex;
+                &__left {
+
+                }
+                &__right {
+                  padding: 5px 0 0 10px;
+                  &--name {
+
+                  }&--like {
+
+                  }
+                }
+              }
+              &__title {
+                margin: 5px 0 5px 5px;
+                font-weight: 600;
+              }
+              &__comment {
+                overflow: scroll;
+                height: 12em ;
+                font-size: 14px;
+                line-height: 1.5;
+              }
+              &__date {
+                margin-top: 15px;
+                font-size: 12px;
+                float: right;
+                color: gray;
+              }
+            }
+          }
+        }
+      }
+    }
+    .MyRoom__contents__right {
+      margin-top: 65px;
+      .MyRoom__price {
+        border: inset 6px;
+        &__title {
+
+          text-align: center;
+          font-size: 20px;
+          font-weight: bold;
+          line-height: 22px;
+          margin: 22px 0 25px 0;
+        }
+        &__main {
+          &__price {
+            line-height: 28px;
+            font-size: 25px;
+            text-align: center;
+            letter-spacing: 1px;
+            font-weight: bold;
+            border-bottom: 10px dashed gray;
+            width: 165px;
+            margin: 0 auto;
+            margin-bottom: 10px;
+          }
+          &__member {
+            font-size: 20px;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 50px;
+          }
+          &__check {
+            text-align: center;
+            font-size: 13px;
+            margin-bottom: 15px;
+          }
+        }
+      }
+      .MyRoom__book {
+         &__title {
+          text-align: center;
+          font-size: 20px;
+          font-weight: bold;
+          margin-top: 20px;
+         }  
+         &__form {
+          display: flex;
+          margin: 0 auto;
+          margin: 0 auto;
+          justify-content: space-around;
+          width: 300px;
+          height: 40px;
+          margin-top: 15px;
+          & span {
+            margin: auto;
+            font-weight: 600;
+          }
+          .BookForm {
+            width: 140px;
+          }
+        }
+        &__price {
+          margin-top: 20px;
+          width: 250px;
+          margin: 20px auto;
+          justify-content: space-between;
+          &__one {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid black;
+            line-height: 40px;
+            &:last-of-type {
+              font-weight: 600;
+            }
+          }
+        }
+        &__btn {
+          width: 300px;
+          margin: 20px auto;
+          .BookBtn {
+            height: 40px;
+            width: 100%;
+          }
+        }
+      } 
+    }
   }
 }
