@@ -128,7 +128,6 @@
             .Review {
               padding: 13px;
               border: 1px solid lightgray;
-              margin-right: 5px;
               &__head {
                 display: flex;
                 &__left {
@@ -152,6 +151,12 @@
                 height: 12em ;
                 font-size: 14px;
                 line-height: 1.5;
+              }
+              &__date {
+                margin-top: 15px;
+                font-size: 12px;
+                float: right;
+                color: gray;
               }
             }
           }
