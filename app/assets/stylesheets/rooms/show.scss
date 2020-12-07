@@ -107,6 +107,26 @@
           &__map {
           }
         }
+        .MyRoom__info__reviews {
+          margin-top: 30px;
+          &__head {
+            display: flex;
+            &__title {
+              font-size: 20px;
+              font-weight: 700;
+              margin-left: 20px;
+            }
+            &__num {
+
+            }
+          }
+          &__main {
+            display: flex;
+            .Review {
+
+            }
+          }
+        }
       }
     }
     .MyRoom__contents__right {

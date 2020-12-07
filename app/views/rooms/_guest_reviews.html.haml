@@ -1,0 +1,31 @@
+.MyRoom__info__reviews__head
+  .MyRoom__info__reviews__head__title
+    口コミ
+  .MyRoom__info__reviews__head__num
+    - if @guest_reviews.count != 0
+      = "#{@guest_reviews.count}件の口コミ"
+    - else
+      %h2 口コミはありません
+.row
+  .MyRoom__info__reviews__main
+    - @guest_reviews.each do |review|
+      .Review
+        .Review__head
+          .Review__head__left
+            - if review.guest.image.url
+              = image_tag review.guest.image.url, class: "avatar_large"
+            - else
+              = image_tag 'no-image.png', class: "avatar_large"
+          .Review__head__right
+            .Review__head__right--name
+              = review.guest.nickname
+            .Review__head__right--like
+              = review.like
+        .Review__title
+          = review.title
+        .Review__comment
+          = review.comment
+        .Review__date
+          = review.created_at.strftime("%Y/%m/%d %H:%M:%S")
+      
+        
