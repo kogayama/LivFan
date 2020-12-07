@@ -19,8 +19,10 @@
 
           .ReviewForm__contents__form
             .ReviewForm__contents__header
-              = f.label :like, class: "ReviewForm__contents__header__label"
-            = f.text_field :like, class: "ReviewForm__contents__like mb-5 p-2"
+              #star.Review-star
+                = f.label :like,  "星評価 (※必須)" ,id: "e", class: "ReviewForm__contents__header__label"
+                = f.hidden_field :like, id: "review_star"
+
         - @mybooks.each do |book|
           = f.hidden_field :room_id, value: book.room.id
           = f.hidden_field :book_id, value: book.id
@@ -28,3 +30,14 @@
         
         = f.submit "投稿する", class: "ReviewForm__btn text-center"
   %a.js-modal-close{href: ""} 閉じる
+
+:javascript
+  $('#star').raty({
+      size     : 36,
+      starOff:  "#{asset_path('star-off.png')}",
+      starOn : "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      scoreName: 'comment[rate]',
+      half: true,
+  });
+  
