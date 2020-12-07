@@ -111,10 +111,12 @@
           margin-top: 30px;
           &__head {
             display: flex;
+            margin-bottom: 25px;
+            align-items: baseline;
             &__title {
               font-size: 20px;
               font-weight: 700;
-              margin-left: 20px;
+              margin: 0 20px;
             }
             &__num {
 
@@ -122,8 +124,35 @@
           }
           &__main {
             display: flex;
+            
             .Review {
+              padding: 13px;
+              border: 1px solid lightgray;
+              margin-right: 5px;
+              &__head {
+                display: flex;
+                &__left {
 
+                }
+                &__right {
+                  padding: 5px 0 0 10px;
+                  &--name {
+
+                  }&--like {
+
+                  }
+                }
+              }
+              &__title {
+                margin: 5px 0 5px 5px;
+                font-weight: 600;
+              }
+              &__comment {
+                overflow: scroll;
+                height: 12em ;
+                font-size: 14px;
+                line-height: 1.5;
+              }
             }
           }
         }
