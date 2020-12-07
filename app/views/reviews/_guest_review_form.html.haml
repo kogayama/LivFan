@@ -20,7 +20,7 @@
           .ReviewForm__contents__form
             .ReviewForm__contents__header
               #star.Review-star
-                = f.label :like,  "星評価 (※必須)" ,id: "e", class: "ReviewForm__contents__header__label"
+                = f.label :like, "評価" ,id: "e", class: "ReviewForm__contents__header__label"
                 = f.hidden_field :like, id: "review_star"
 
         - @mybooks.each do |book|
@@ -37,7 +37,7 @@
       starOff:  "#{asset_path('star-off.png')}",
       starOn : "#{asset_path('star-on.png')}",
       starHalf: "#{asset_path('star-half.png')}",
-      scoreName: 'comment[rate]',
+      scoreName: 'guest_review[%like]',
       half: true,
   });
   
