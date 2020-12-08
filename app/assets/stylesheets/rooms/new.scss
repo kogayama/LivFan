@@ -75,6 +75,11 @@
       }
     }
   }
+  .RoomNewForm_error-message {
+    font-size: 12px;
+    color: red;
+  }
+
   .RoomNewForm__btn {
     text-align: center;
     & input {

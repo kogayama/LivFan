@@ -3,9 +3,7 @@ ja:
     attributes:
       room:
         name: お部屋のタイトル
-        introduction: 商品の説明
-        price: 価格
-        item_images: 商品の画像
+        introduction: お部屋の説明
         home_type: 建物タイプ
         room_type: お部屋タイプ
         member: 人数
