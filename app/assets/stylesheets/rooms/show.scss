@@ -111,7 +111,7 @@
           margin-top: 30px;
           &__head {
             display: flex;
-            margin-bottom: 25px;
+            margin-bottom: 10px;
             align-items: baseline;
             &__title {
               font-size: 20px;
@@ -126,19 +126,23 @@
             display: flex;
             
             .Review {
+              position: relative;
               padding: 13px;
               border: 1px solid lightgray;
+              height: 380px;
               &__head {
                 display: flex;
                 &__left {
-
                 }
                 &__right {
-                  padding: 5px 0 0 10px;
+                  padding: 10px 0 0 10px;
                   &--name {
-
+                    line-height: 16px;
                   }&--like {
-
+                    & img {
+                      width: 15px;
+                      line-height: 20px;
+                    }
                   }
                 }
               }
@@ -157,6 +161,9 @@
                 font-size: 12px;
                 float: right;
                 color: gray;
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
               }
             }
           }

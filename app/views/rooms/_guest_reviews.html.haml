@@ -20,14 +20,20 @@
           .Review__head__right
             .Review__head__right--name
               = review.guest.nickname
-            .Review__head__right--like
-              = review.like
+            .Review__head__right--like{id: "star-rate-#{review.id}"}
+              :javascript
+                $('#star-rate-#{review.id}').raty({
+                  
+                  starOff:  "#{asset_path('star-off.png')}",
+                  starOn : "#{asset_path('star-on.png')}",
+                  starHalf: "#{asset_path('star-half.png')}",
+                  readOnly: true,
+                  score: "#{review.like}",
+                });
         .Review__title
           = "『#{review.title}』"
         .Review__comment
           = review.comment
         .Review__date
           = review.created_at.strftime("%Y/%m/%d %H:%M:%S")
-        
-        
-          
+
