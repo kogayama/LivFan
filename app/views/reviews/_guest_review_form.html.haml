@@ -18,10 +18,10 @@
             = f.text_area :comment, rows: 10, class: "ReviewForm__contents__comment mb-4 p-2"
 
           .ReviewForm__contents__form
-            .ReviewForm__contents__header
-              #star.Review-star
-                = f.label :like, "評価" ,id: "e", class: "ReviewForm__contents__header__label"
-                = f.hidden_field :like, id: "review_star"
+            .ReviewForm__contents__header.Review__star__header
+              = f.label :like, "評価" ,id: "e", class: "ReviewForm__contents__header__label"
+            #star.Review__star
+              = f.hidden_field :like, id: "review_star"
 
         - @mybooks.each do |book|
           = f.hidden_field :room_id, value: book.room.id

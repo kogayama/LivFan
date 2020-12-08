@@ -61,6 +61,17 @@
         float: right;
       }
     }
+    .Review__star__header {
+      padding-left: 180px;
+      font-weight: 600;
+    }
+    .Review__star {
+      margin-bottom: 20px;
+      line-height: 24px;
+      & img {
+        margin-right: 5px;
+      }
+    }
     
     
     &__title {
