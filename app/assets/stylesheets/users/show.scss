@@ -1,0 +1,68 @@
+.UserShow {
+  width: 900px;
+  margin: 20px auto;
+  &__header {
+    display: flex;
+    border-bottom: 1px solid;
+    &__left {
+      line-height: 200px;
+      padding: 0 20px;
+      height: 240px;
+      &__image {
+        width: 150px;
+        height: 150px;
+        border-radius: 100%;
+      }
+    }
+    &__right {
+      padding: 30px 0 0 20px;
+      align-items: center;
+      &__head {
+        display: flex;
+        align-items: center;
+        margin: 0 0 5px;
+        &__name {
+          font-size: 25px;
+          margin-right: 30px;
+          font-weight: 600;
+        }
+        &__edit {
+          border: 1px solid;
+          border-radius: 5px;
+          padding: 3px;
+          font-size: 14px;
+          color: black;
+        }
+      }
+      &__review {
+      }
+      &__rooms-num {
+        margin: 5px 0;
+      }
+      &__introduction {
+        font-size: 14px;
+        line-height: 1.6;
+        height: 6.4em;
+        overflow: scroll;
+      }
+    }
+  }
+  &__main {
+    &__room {
+      &__image {
+
+      }
+      &__info {
+        &__title {
+
+        }
+        &__price {
+
+        }
+        &__location {
+
+        }
+      }
+    }
+  }
+}

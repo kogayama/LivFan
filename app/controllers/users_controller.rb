@@ -12,11 +12,12 @@ class UsersController < ApplicationController
   end
   
   def show
-    user = User.find(params[:id])
-    @id = user.id
-    @nickname = user.nickname
-    @image = user.image
-    @introduction = user.introduction
+    @user = User.find(params[:id])
+    @id = @user.id
+    @nickname = @user.nickname
+    @image = @user.image
+    @introduction = @user.introduction
+    @rooms = @user.rooms
   end
 
   def mypage

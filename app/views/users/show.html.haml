@@ -1,11 +1,37 @@
 .UserShow
   .UserShow__header
-    .UserShow__header__right
     .UserShow__header__left
-      .UserShow__header__left__name
-        = @nickname
+      -if @image
+        = image_tag @image.url, class: "UserShow__header__left__image"
+      - else
+        =image_tag "no-image.png", class: "UserShow__header__left__image"
+    .UserShow__header__right
+      
+      .UserShow__header__right__head
+        .UserShow__header__right__head__name
+          = @nickname
         -if user_signed_in? && current_user.id == @id
           = link_to edit_user_path(current_user) do
-            プロフィール編集
-      .UserShow__header__left__introduction
+            .UserShow__header__right__head__edit プロフィール編集
+      .UserShow__header__right__review
+        ☆☆☆☆☆
+      .UserShow__header__right__rooms-num
+        = "投稿#{@rooms.count}件"
+      .UserShow__header__right__introduction
         = @introduction
+
+  .UserShow__main
+  - @rooms.each do |room|
+    .UserShow__main__room
+      .UserShow__main__room__image
+        - if room.room_images.length > 0
+          =image_tag room.room_images[0].image.url, width: 200, height: 200
+        - else
+          =image_tag "no-image.png", width: 200, height: 200
+      .UserShow__main__room__info
+        .UserShow__main__room__info__title
+          = room.name
+        .UserShow__main__room__info__price
+          = "#{room.price}/泊"
+        .UserShow__main__room__info__location
+          = room.location
