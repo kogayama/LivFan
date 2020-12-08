@@ -1,0 +1,34 @@
+ja:
+  activerecord:
+    attributes:
+      room:
+        name: お部屋のタイトル
+        introduction: 商品の説明
+        price: 価格
+        item_images: 商品の画像
+        home_type: 建物タイプ
+        room_type: お部屋タイプ
+        member: 人数
+        price: 料金
+        bed: ベッド
+        bath: バス
+        location: 場所
+        is_tv: テレビ
+        is_kitchen: キッチン
+        is_air: エアコン
+        is_heater: ヒーター
+        is_wifi: Wi-Fi
+        pet: ペット同伴可否
+        parking: 駐車場
+        breakfast: 朝食
+
+    errors:
+      models:
+        item:
+          attributes:
+            item_images:
+              too_long: 'は%{count}個までしか選択できません'
+    models:
+      room: お部屋
+      
+      
