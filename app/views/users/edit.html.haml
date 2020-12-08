@@ -14,8 +14,13 @@
       .UserEdit__main__form
         = f.label :nickname, class: "UserEdit__main__form__label"
         = f.text_field :nickname, autofocus: true, placeholder: "名前", class: "UserEdit__main__form__field"
+      
       .UserEdit__main__form
         = f.label :email, class: "UserEdit__main__form__label"
         = f.text_field :email, autofocus: true, placeholder: "メール", class: "UserEdit__main__form__field"
+
+      .UserEdit__main__form
+        = f.label :introduction, class: "UserEdit__main__form__label"
+        = f.text_area :introduction, autofocus: true, placeholder: "◯◯文字まで", class: "UserEdit__main__form__field"
     .UserEdit__foot
       = f.submit class: "UserEdit__foot__btn"
