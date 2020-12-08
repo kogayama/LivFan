@@ -1,11 +1,12 @@
 .row
-  .col-md-3
-    
-    =render 'sidebar'
-  .col-md-7
+  =render 'headbar'
+  .col-md-12
     .RoomNew
+      .RoomNew__header
+        .RoomNew__header__title
+          基本情報
       .RoomNew__main
-        = form_with model: @room, url:rooms_path, local: true do |f|
+        = form_with model: @room do |f|
         
           .RoomNew__main__contents
             .RoomNew__main__contents__top

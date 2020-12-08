@@ -1,0 +1,14 @@
+// HeadBar
+.HeadBar {
+  width: 700px;
+  margin: 20px auto;
+}
+
+// Facility
+.RoomFacility {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+  &__form {
+  }
+}
