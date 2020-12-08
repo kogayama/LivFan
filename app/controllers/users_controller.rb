@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def update
     current_user.update(user_params)
-    redirect_back(fallback_location: request.referer)
+    redirect_to mypage_user_path(current_user)
   end
   
   def show

@@ -1,5 +1,11 @@
-.row
-  .col-md-3
-    =render 'card'
-    =render 'modules/sidebar'
-  .main aaa
+.UserShow
+  .UserShow__header
+    .UserShow__header__right
+    .UserShow__header__left
+      .UserShow__header__left__name
+        = @nickname
+        -if user_signed_in? && current_user.id == @id
+          = link_to edit_user_path(current_user) do
+            プロフィール編集
+      .UserShow__header__left__introduction
+        = @introduction
