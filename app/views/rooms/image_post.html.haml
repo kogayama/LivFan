@@ -13,8 +13,8 @@
                 .row
                   .form-group
                     .btn-file
-                      ファイルを選択
-                      = file_field_tag "images[]", type: :file, multiple: true
+                      = f.file_field :image, name: "images[]", class: 'img_field', multiple: true, style: 'display:none;'
+                      = image_tag "image_preview.gif", onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev',width: 500
                 .FormField__btn.text-center
                   = f.submit "写真を追加", class: "btn btn-form"
                 #images
