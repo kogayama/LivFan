@@ -1,32 +1,21 @@
-.AccountEdit__main
-= form_for(@user) do |f|
-  .AccountEdit__main__form
-
-    - if @image.present?
-      = image_tag @image.url, class: 'account-page__inner--icon__input__image avatar_large'
-    .FormField__image
-    = f.file_field :image, class: 'account-page__inner--icon__input__btn', id: 'user_image'
-
-    .FormField
-      = f.label :nickname, class: "FormField__label"
-      %span
-      = f.text_field :nickname, autofocus: true, placeholder: "名前", class: "FormField__input"
-
-    .FormField
-    = f.label :introduction, class: "FormField__label"
-    %span
-    = f.text_area :introduction, autofocus: true, autocomplete: 'off', placeholder: "紹介", class: "FormField__input"
-
-    .FormField
-      = f.label :email, class: "FormField__label"
-      %span
-      = f.text_field :email, autofocus: true, placeholder: "メール", class: "FormField__input"
-
-
-    = f.submit
-
-    
-
-  .account-page__inner--icon
-    .account-page__inner--icon__label
-    .account-page__inner--icon__input
+.UserEdit
+  = form_for(@user) do |f|
+    .UserEdit__header
+      .UserEdit__header__title
+        ユーザー情報
+    .UserEdit__main
+      .UserEdit__main__image
+        - if @image.present?
+          = f.file_field :image, class: 'img_field', style: 'display:none;'
+          = image_tag @image.url, onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev',width: "100%"
+        - else
+          = f.file_field :image, class: 'img_field', style: 'display:none;'
+          = image_tag "image_preview.gif", onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev',width: "100%"
+      .UserEdit__main__form
+        = f.label :nickname, class: "UserEdit__main__form__label"
+        = f.text_field :nickname, autofocus: true, placeholder: "名前", class: "UserEdit__main__form__field"
+      .UserEdit__main__form
+        = f.label :email, class: "UserEdit__main__form__label"
+        = f.text_field :email, autofocus: true, placeholder: "メール", class: "UserEdit__main__form__field"
+    .UserEdit__foot
+      = f.submit class: "UserEdit__foot__btn"
