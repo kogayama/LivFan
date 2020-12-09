@@ -14,7 +14,7 @@
     width: 100%;
 
     &__image {
-      margin-right: 25px;
+      margin-right: 40px;
       &__one {
         height: 90px;
         width: 90px;
@@ -22,10 +22,21 @@
     }
 
     &__main {
+      &__date {
+        display: flex;
+        font-size: 12px;
+        color: gray;
+        margin-bottom: 8px;
+        &__checkin {
+          margin-right: 2px;
+        }
+        &__checkout {
+          margin-left: 2px;
+        }
+      }
       &__title {
         margin-bottom: 10px;
         font-size: 17px;
-        padding-top: 30px;
         font-weight: 600;
       }
       &__user {

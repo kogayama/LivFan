@@ -13,6 +13,12 @@
                 =image_tag "no-image.png", class: "Mybook__left__image__one"
           
           .Mybook__left__main
+            .Mybook__left__main__date
+              .Mybook__left__main__date__checkin
+                = book.start_date.strftime("%Y/%m/%d")
+              %span ~
+              .Mybook__left__main__date__checkout
+                = book.end_date.strftime("%Y/%m/%d")
             = link_to room_path(book.room.id) do
               .Mybook__left__main__title
                 =book.room.name
