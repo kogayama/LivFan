@@ -36,4 +36,4 @@
           = link_to "#", class: "Mybook__right__edit" do
             確認
           .Mybook__right__review
-            = render 'reviews/guest_review_form'
+            = render partial: 'reviews/guest_review_form', locals: {book: book}

@@ -1,5 +1,5 @@
-%a.js-modal-open{href: ""} 評価する
-.modal.js-modal
+%a.js-modal-open{href: "", "data-target": "Modal_#{book.id}"} 評価する
+.modal.js-modal{id: "Modal_#{book.id}"}
   .modal__bg.js-modal-close
   .modal__content
     .ReviewForm
@@ -23,22 +23,21 @@
             #star.Review__star
               = f.hidden_field :like, id: "review_star"
 
-        - @mybooks.each do |book|
-          = f.hidden_field :room_id, value: book.room.id
-          = f.hidden_field :book_id, value: book.id
-          = f.hidden_field :host_id, value: book.room.user.id
-        
+            = f.hidden_field :room_id, value: book.room.id
+            = f.hidden_field :book_id, value: book.id
+            = f.hidden_field :host_id, value: book.room.user.id
+
+            :javascript
+              $('#star').raty({
+                  size     : 36,
+                  starOff:  "#{asset_path('star-off.png')}",
+                  starOn : "#{asset_path('star-on.png')}",
+                  starHalf: "#{asset_path('star-half.png')}",
+                  scoreName: 'guest_review[like]',
+                  half: true,
+                  score: 1,
+                  rating: 5
+              });
         = f.submit "投稿する", class: "ReviewForm__btn text-center"
   %a.js-modal-close{href: ""} 閉じる
 
-:javascript
-  $('#star').raty({
-      size     : 36,
-      starOff:  "#{asset_path('star-off.png')}",
-      starOn : "#{asset_path('star-on.png')}",
-      starHalf: "#{asset_path('star-half.png')}",
-      scoreName: 'guest_review[%like]',
-      half: true,
-      score: 1
-  });
-  
