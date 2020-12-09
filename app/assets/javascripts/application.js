@@ -20,7 +20,7 @@ $(function () {
     }
   }
 
-  $('.img_field').change(function () {
+  $('.img_field').change("turbolinks:load",function () {
     readURL(this);
   });
 });

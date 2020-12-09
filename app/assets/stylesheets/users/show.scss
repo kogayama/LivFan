@@ -51,7 +51,9 @@
   &__main {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     &__card {
+      margin: 0 10px 35px;
       background-color: #fff;
       box-shadow: 0 0 8px rgba(0, 0, 0, .16);
       color: #212121;
