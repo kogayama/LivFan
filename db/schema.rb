@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_175154) do
+ActiveRecord::Schema.define(version: 2020_12_09_183457) do
 
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_175154) do
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "comment"
-    t.integer "like", default: 1
+    t.float "like", default: 1.0
     t.bigint "room_id", null: false
     t.bigint "book_id", null: false
     t.datetime "created_at", precision: 6, null: false
