@@ -35,40 +35,40 @@
         .Mybook__right
           = link_to "#", class: "Mybook__right__edit" do
             確認
-          
-          .Mybook__right__review
-            %a.js-modal-open{href: "", "data-target": "Modal_#{book.id}"} 評価する
-            .modal.js-modal{id: "Modal_#{book.id}"}
-              .modal__bg.js-modal-close
-              .modal__content
-                .ReviewForm
-                  = form_for (current_user.guest_reviews.new) do |f|
-                    .ReviewForm__contents
+          - if !(book.guest_review)
+            .Mybook__right__review
+              %a.js-modal-open{href: "", "data-target": "Modal_#{book.id}"} 評価する
+              .modal.js-modal{id: "Modal_#{book.id}"}
+                .modal__bg.js-modal-close
+                .modal__content
+                  .ReviewForm
+                    = form_for (current_user.guest_reviews.new) do |f|
+                      .ReviewForm__contents
 
-                      .ReviewForm__contents__form
-                        .ReviewForm__contents__header
-                          = f.label :title, class: "ReviewForm__contents__header__label"
-                          %span.ReviewForm__contents__header__require 〇〇文字まで
-                        = f.text_field :title, class: "ReviewForm__contents__title mb-2 p-2"
-                      .ReviewForm__contents__form
-                        .ReviewForm__contents__header
-                          = f.label :comment, class: "ReviewForm__contents__header__label"
-                          %span.ReviewForm__contents__header__require 〇〇文字まで
-                        = f.text_area :comment, rows: 10, class: "ReviewForm__contents__comment mb-4 p-2"
+                        .ReviewForm__contents__form
+                          .ReviewForm__contents__header
+                            = f.label :title, class: "ReviewForm__contents__header__label"
+                            %span.ReviewForm__contents__header__require 〇〇文字まで
+                          = f.text_field :title, class: "ReviewForm__contents__title mb-2 p-2"
+                        .ReviewForm__contents__form
+                          .ReviewForm__contents__header
+                            = f.label :comment, class: "ReviewForm__contents__header__label"
+                            %span.ReviewForm__contents__header__require 〇〇文字まで
+                          = f.text_area :comment, rows: 10, class: "ReviewForm__contents__comment mb-4 p-2"
 
-                      .ReviewForm__contents__form
-                        .ReviewForm__contents__header.Review__star__header
-                          = f.label :like, "評価" ,id: "e", class: "ReviewForm__contents__header__label"
-                        .Review__star{id: "star_#{book.id}"}
-                          = f.hidden_field :like, id: "review_star"
+                        .ReviewForm__contents__form
+                          .ReviewForm__contents__header.Review__star__header
+                            = f.label :like, "評価" ,id: "e", class: "ReviewForm__contents__header__label"
+                          .Review__star{id: "star_#{book.id}"}
+                            = f.hidden_field :like, id: "review_star"
 
-                        = f.hidden_field :room_id, value: book.room.id
-                        = f.hidden_field :book_id, value: book.id
-                        = f.hidden_field :host_id, value: book.room.user.id
+                          = f.hidden_field :room_id, value: book.room.id
+                          = f.hidden_field :book_id, value: book.id
+                          = f.hidden_field :host_id, value: book.room.user.id
 
-                        
-                    = f.submit "投稿する", class: "ReviewForm__btn text-center"
-              %a.js-modal-close{href: ""} 閉じる
+                          
+                      = f.submit "投稿する", class: "ReviewForm__btn text-center"
+                %a.js-modal-close{href: ""} 閉じる
 
 
 :javascript
