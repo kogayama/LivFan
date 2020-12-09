@@ -24,18 +24,19 @@
     - @rooms.each do |room|
       %article.UserShow__main__card
         .UserShow__main__card__header
-          %h3.UserShow__main__card__header__title
-            = room.name
           %figure.UserShow__main__card__header__image
             - if room.room_images.length > 0
-              =image_tag room.room_images[0].image.url, width: 200, height: 200
+              =image_tag room.room_images[0].image.url, width: 300, height: 300
             - else
-              =image_tag "no-image.png", width: 200, height: 200
+              =image_tag "no-image.png", width: 300, height: 300
+          = link_to room_path(room.id) do
+            .UserShow__main__card__header__title
+              = room.name
         .UserShow__main__card__body
           %p.UserShow__main__card__body__review
-            ☆☆☆☆☆☆
+            ☆☆☆☆☆
           %p.UserShow__main__card__body__location
             = room.location
           %p.UserShow__main__card__body__price
-            = "#{room.price}/泊"
-        
+            = "#{room.price}円/泊"
+      
