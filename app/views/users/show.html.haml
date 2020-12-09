@@ -1,7 +1,7 @@
 .UserShow
   .UserShow__header
     .UserShow__header__left
-      -if @image
+      -if @image.present?
         = image_tag @image.url, class: "UserShow__header__left__image"
       - else
         =image_tag "no-image.png", class: "UserShow__header__left__image"

@@ -11,8 +11,13 @@
               =image_tag room.room_images[0].image.url, class: "avatar_large"
             - else
               =image_tag "no-image.png", class: "avatar_large"
-          .Roomlist__left__title
-            =room.name
+          
+          .Roomlist__left__main
+            = link_to room_path(room.id) do
+              .Roomlist__left__main__title
+                =room.name
+            .Roomlist__left__main__review
+              ☆☆☆☆☆
         .Roomlist__right
           = link_to info_room_path(room) do
             .Roomlist__edit 編集
