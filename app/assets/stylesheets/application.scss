@@ -11,6 +11,7 @@
 @import "rooms/partial";
 @import "users/edit";
 @import "users/show";
+@import "users/mybook";
 @import "tempusdominus-bootstrap-4.css";
 
 body {
@@ -20,6 +21,14 @@ body {
 
 .contents {
   padding: 0 60px;
+}
+
+a {
+  color: black;
+}
+a:hover {
+  text-decoration: none;
+  color: gray;
 }
 
 .selects {

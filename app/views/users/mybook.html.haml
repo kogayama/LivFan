@@ -1,21 +1,33 @@
 .row
   .col-md-3
     =render 'modules/sidebar'
-  
   .col-md-9
     - @mybooks.each do |book|
-      .Roomlist
-        .Roomlist__left
-          .Roomlist__left__image
+      .Mybook
+        .Mybook__left
+          .Mybook__left__image
             = link_to room_path(book.room.id) do
               - if book.room.room_images.length > 0
-                =image_tag book.room.room_images[0].image.url, class: "avatar_large"
+                =image_tag book.room.room_images[0].image.url, class: "Mybook__left__image__one"
               - else
-                =image_tag "no-image.png", class: "avatar_large"
-          = link_to room_path(book.room.id), class: "Roomlist__left__title" do
-            =book.room.name
-        .Roomlist__right
-          = link_to "#", class: "Roomlist__right__edit" do
+                =image_tag "no-image.png", class: "Mybook__left__image__one"
+          
+          .Mybook__left__main
+            = link_to room_path(book.room.id) do
+              .Mybook__left__main__title
+                =book.room.name
+            .Mybook__left__main__user
+              .Mybook__left__main__user__title
+                ホスト:
+              .Mybook__left__main__user__image
+                - if book.room.user.image
+                  = image_tag book.room.user.image.url, class: "avatar_small"
+                - else
+                  = image_tag "no-image.png", class: "avatar_small"
+              = link_to user_path(book.room.user.id), class: "Mybook__left__main__user__nickname" do
+                = book.room.user.nickname
+        .Mybook__right
+          = link_to "#", class: "Mybook__right__edit" do
             確認
-          .Roomlist__right__review
+          .Mybook__right__review
             = render 'reviews/guest_review_form'
