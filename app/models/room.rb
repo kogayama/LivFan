@@ -18,4 +18,10 @@ class Room < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :location_changed?
   
+
+  def like_ave
+    if guest_reviews
+      return guest_reviews.average(:like).to_f.round(2)
+    end
+  end
 end

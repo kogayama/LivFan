@@ -17,7 +17,23 @@
               .Roomlist__left__main__title
                 =room.name
             .Roomlist__left__main__review
-              ☆☆☆☆☆
+              - if room.guest_reviews.count > 0
+                .Roomlist__left__main__review__star{id: "star-rate-#{room.id}"}
+                  = room.like_ave
+                  :javascript
+                    $('#star-rate-#{room.id}').raty({
+                      
+                      starOff:  "#{asset_path('star-off.png')}",
+                      starOn : "#{asset_path('star-on.png')}",
+                      starHalf: "#{asset_path('star-half.png')}",
+                      readOnly: true,
+                      score: "#{room.like_ave}",
+                    });
+              - else
+                .Roomlist__left__main__review__no-star
+                  評価がありません
+                  
+              
         .Roomlist__right
           = link_to info_room_path(room) do
             .Roomlist__edit 編集
