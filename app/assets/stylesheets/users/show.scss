@@ -36,6 +36,7 @@
         }
       }
       &__review {
+        
       }
       &__rooms-num {
         margin: 5px 0;
@@ -87,6 +88,26 @@
         text-align: end;
         &__review {
           margin: auto 5px;
+          display: flex;
+          font-size: 15px;
+          justify-content: flex-end;
+          margin-bottom: 10px;
+          &__star {
+            & img {
+              width: 17px;
+            }
+          }
+          
+          &__info {
+            padding-top: 3px;
+            margin-left: 8px;
+            border-bottom: 1px solid lightgray;
+            line-height: 20px;
+          }
+          &__no-star {
+            padding-right: 10px;
+            color: gray;
+          }
         }
         &__location {
           margin-bottom: auto;

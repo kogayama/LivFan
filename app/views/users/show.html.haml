@@ -33,8 +33,25 @@
             .UserShow__main__card__header__title
               = room.name
         .UserShow__main__card__body
-          %p.UserShow__main__card__body__review
-            ☆☆☆☆☆
+          .UserShow__main__card__body__review
+            - if room.guest_reviews.count > 0
+              .UserShow__main__card__body__review__star{id: "star-rate-#{room.id}"}
+                :javascript
+                  $('#star-rate-#{room.id}').raty({
+                    
+                    starOff:  "#{asset_path('star-off.png')}",
+                    starOn : "#{asset_path('star-on.png')}",
+                    starHalf: "#{asset_path('star-half.png')}",
+                    readOnly: true,
+                    score: "#{room.like_ave}",
+                  });
+              .UserShow__main__card__body__review__info
+                = room.like_ave
+                %span /
+                = "#{room.guest_reviews.count}件"
+            - else
+              .UserShow__main__card__body__review__no-star
+                評価がありません。
           %p.UserShow__main__card__body__location
             = room.location
           %p.UserShow__main__card__body__price
