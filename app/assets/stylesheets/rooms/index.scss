@@ -26,27 +26,53 @@
         }
       }
       &__title {
-        color: black;
-        font-size: 1.25rem;
-        order: 1;
-        padding: 18px 0 0 10px;
-        font-weight: 600;
+        display: flex;
+        padding: 10px 0 0 10px;
+        align-items: center;
+        &__name {
+          color: black;
+          font-size: 1.25rem;
+          order: 1;
+          font-weight: 600;
+          margin-right: 10px;
+        }
+        &__edit {
+          border: 1px solid;
+          font-size: 12px;
+          padding: 1px 3px;
+          border-radius: 4px;
+        }
       }
     }
     &__body {
       text-align: end;
       &__review {
         margin: auto 5px;
+        display: flex;
+        font-size: 15px;
+        justify-content: flex-end;
+        margin-bottom: 15px;
+        &__star {
+          & img {
+            width: 17px;
+          }
+        }
+        
+        &__info {
+          padding-top: 3px;
+          margin-left: 8px;
+          border-bottom: 1px solid lightgray;
+          line-height: 20px;
+        }
+        &__no-star {
+          padding-right: 10px;
+          color: gray;
+        }
       }
       &__location {
         margin-bottom: auto;
         font-size: 13px;
-        padding: 3px 5px 0 0;
-      }
-      &__price {
-        margin-bottom: auto;
-        font-size: 15px;
-        padding: 2px 5px 3px 0;
+        padding: 5px;
       }
     }
   }
