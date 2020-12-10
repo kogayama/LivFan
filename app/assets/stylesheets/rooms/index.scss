@@ -1,45 +1,54 @@
+
 .Roomlist {
   display: flex;
-  justify-content: space-between;
-  border: 2px solid #f8f8f8;
-  height: 120px;
-  padding: 0 15px;
-  margin-bottom: 15px;
-  &:first-of-type {
-    margin-top: 70px;
-  }
-  .Roomlist__left {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    &__image {
-      margin-right: 25px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  &__card {
+    margin: 0 10px 35px;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .16);
+    color: #212121;
+    text-decoration: none;
+    width: 300px;
+    &:hover {
+      text-decoration: none;
     }
-    &__title {
-      font-size: 16px;
-      font-weight: 550;
+    &__header {
+      flex-wrap: wrap;
+      & a {
+        text-decoration: none;
+      }
+      &__image {
+        margin: 0;
+        order: 0;
+        & img {
+          width: 100%;
+        }
+      }
+      &__title {
+        color: black;
+        font-size: 1.25rem;
+        order: 1;
+        padding: 18px 0 0 10px;
+        font-weight: 600;
+      }
     }
-  }
-  .Roomlist__right {
-    display: flex;
-    width: 160px;
-    &__edit {
-      font-size: 13px;
-      border: 1px solid #f5f5f5;
-      width: 70px;
-      height: 45px;
-      text-align: center;
-      line-height: 45px;
-      margin: auto;
-    }
-    &__review {
-      font-size: 13px;
-      border: 1px solid #f5f5f5;
-      width: 70x;
-      height: 45px;
-      text-align: center;
-      line-height: 45px;
-      margin: auto;
+    &__body {
+      text-align: end;
+      &__review {
+        margin: auto 5px;
+      }
+      &__location {
+        margin-bottom: auto;
+        font-size: 13px;
+        padding: 3px 5px 0 0;
+      }
+      &__price {
+        margin-bottom: auto;
+        font-size: 15px;
+        padding: 2px 5px 3px 0;
+      }
     }
   }
 }
+

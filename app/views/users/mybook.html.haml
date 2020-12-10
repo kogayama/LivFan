@@ -26,7 +26,7 @@
               .Mybook__left__main__user__title
                 ホスト:
               .Mybook__left__main__user__image
-                - if book.room.user.image
+                - if book.room.user.image.present?
                   = image_tag book.room.user.image.url, class: "avatar_small"
                 - else
                   = image_tag "no-image.png", class: "avatar_small"
