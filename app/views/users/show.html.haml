@@ -1,5 +1,59 @@
-.row
-  .col-md-3
-    =render 'card'
-    =render 'modules/sidebar'
-  .main aaa
+.UserShow
+  .UserShow__header
+    .UserShow__header__left
+      -if @image.present?
+        = image_tag @image.url, class: "UserShow__header__left__image"
+      - else
+        =image_tag "no-image.png", class: "UserShow__header__left__image"
+    .UserShow__header__right
+      
+      .UserShow__header__right__head
+        .UserShow__header__right__head__name
+          = @nickname
+        -if user_signed_in? && current_user.id == @id
+          = link_to edit_user_path(current_user) do
+            .UserShow__header__right__head__edit プロフィール編集
+      .UserShow__header__right__review
+        = current_user.user_like_ave(current_user)
+      .UserShow__header__right__rooms-num
+        = "お部屋掲載数: #{@rooms.count}件"
+      .UserShow__header__right__introduction
+        = @introduction
+  
+  .UserShow__main
+    - @rooms.each do |room|
+      %article.UserShow__main__card
+        .UserShow__main__card__header
+          %figure.UserShow__main__card__header__image
+            - if room.room_images.length > 0
+              =image_tag room.room_images[0].image.url, width: 300, height: 300
+            - else
+              =image_tag "no-image.png", width: 300, height: 300
+          = link_to room_path(room.id) do
+            .UserShow__main__card__header__title
+              = room.name
+        .UserShow__main__card__body
+          .UserShow__main__card__body__review
+            - if room.guest_reviews.count > 0
+              .UserShow__main__card__body__review__star{id: "star-rate-#{room.id}"}
+                :javascript
+                  $('#star-rate-#{room.id}').raty({
+                    
+                    starOff:  "#{asset_path('star-off.png')}",
+                    starOn : "#{asset_path('star-on.png')}",
+                    starHalf: "#{asset_path('star-half.png')}",
+                    readOnly: true,
+                    score: "#{room.like_ave}",
+                  });
+              .UserShow__main__card__body__review__info
+                = room.like_ave
+                %span /
+                = "#{room.guest_reviews.count}件"
+            - else
+              .UserShow__main__card__body__review__no-star
+                評価がありません。
+          %p.UserShow__main__card__body__location
+            = room.location
+          %p.UserShow__main__card__body__price
+            = "#{room.price}円/泊"
+      

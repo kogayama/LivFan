@@ -13,7 +13,7 @@ class HostReviewsController < ApplicationController
                                   book_id: @book.id,
                                   guest_id: host_review_params[:guest_id]
                                   ).first
-      if reviewed.nil?
+      if @reviewed.nil?
         @host_review = current_user.host_reviews.create(host_review_params)
         redirect_back(fallback_location: request.referer)
       else

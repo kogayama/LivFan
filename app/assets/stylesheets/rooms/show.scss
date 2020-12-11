@@ -109,6 +109,8 @@
         }
         .MyRoom__info__reviews {
           margin-top: 30px;
+          position: relative;
+          padding-bottom: 30px;
           &__head {
             display: flex;
             margin-bottom: 10px;
@@ -119,12 +121,18 @@
               margin: 0 20px;
             }
             &__num {
-
+              .no-review {
+                position: absolute;
+                top: 50px;
+                left: 100px;
+                margin-bottom: 50px;
+                padding-bottom: 30px;
+              }
             }
           }
           &__main {
             display: flex;
-            
+            overflow: scroll;
             .Review {
               position: relative;
               padding: 13px;

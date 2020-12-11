@@ -1,6 +1,17 @@
+.Accountcard
+  .Accountcard__main
+    - if current_user.image.blank?
+      = image_tag "no-image.png", class: "avatar_large"
+    - else
+      = image_tag current_user.image.url, class: "avatar_large"
+    .Accountcard__main__right
+      %h5=current_user.nickname
+      = link_to user_path(current_user), class: "Accountcard__main__right--profile" do
+        プロフィール確認
+        
 .list-group.mb-4
   
-  = link_to user_path(current_user), class: "list-group-item list-group-item-action" do
+  = link_to mypage_user_path(current_user), class: "list-group-item list-group-item-action" do
     マイページトップ
   = link_to new_room_path, class: "list-group-item list-group-item-action" do
     部屋を投稿する

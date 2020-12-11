@@ -2,12 +2,17 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "bootstrap";
+@import "top";
 @import "modules/devise";
 @import "modules/shared";
 @import "modules/review_form";
 @import "rooms/show";
 @import "rooms/new";
 @import "rooms/index";
+@import "rooms/partial";
+@import "users/edit";
+@import "users/show";
+@import "users/mybook";
 @import "tempusdominus-bootstrap-4.css";
 
 body {
@@ -17,6 +22,14 @@ body {
 
 .contents {
   padding: 0 60px;
+}
+
+a {
+  color: black;
+}
+a:hover {
+  text-decoration: none;
+  color: gray;
 }
 
 .selects {
@@ -30,9 +43,13 @@ body {
   line-height: 1.5;
   font-size: 16px;
 }
-
 #map { 
   height: 500px;
   width: 100%;
-  
+}
+
+.img_prev:hover {
+  cursor: pointer; 
+  opacity: 0.7;
+  transform: scale(1.01, 1.01);
 }

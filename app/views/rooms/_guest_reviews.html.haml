@@ -5,7 +5,7 @@
     - if @guest_reviews.count != 0
       = "#{@guest_reviews.count}件の口コミ"
     - else
-      %h2 口コミはありません
+      .no-review 口コミはありません
 .row
   .MyRoom__info__reviews__main
     - @guest_reviews.each do |review|

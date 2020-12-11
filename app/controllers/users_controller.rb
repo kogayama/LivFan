@@ -8,15 +8,16 @@ class UsersController < ApplicationController
 
   def update
     current_user.update(user_params)
-    redirect_back(fallback_location: request.referer)
+    redirect_to mypage_user_path(current_user)
   end
   
   def show
-    user = User.find(params[:id])
-    @id = user.id
-    @nickname = user.nickname
-    @image = user.image
-    @introduction = user.introduction
+    @user = User.find(params[:id])
+    @id = @user.id
+    @nickname = @user.nickname
+    @image = @user.image
+    @introduction = @user.introduction
+    @rooms = @user.rooms
   end
 
   def mypage
