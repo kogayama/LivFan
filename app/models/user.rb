@@ -21,4 +21,26 @@ class User < ApplicationRecord
 
   validates :introduction, length: { maximum: 250 }
   mount_uploader :image, ImageUploader
+
+  def user_like_aved(user)
+    if (user.guest_reviews.count > 0) || (user.host_reviews.count > 0)
+      guest_like = user.guest_reviews.average(:like).to_f.round(2)
+      return guest_like
+      host_like = host_reviews.average(:like).to_i.round(2)
+      return (guest_like + host_like / 2).round(2)
+    else
+      return 0
+    end
+  end
+
+  def user_like_ave(user)
+    if (user.guest_reviews.count > 0) || (user.host_reviews.count > 0)
+      guest_like = user.guest_reviews.average(:like).to_f.round(2)
+      return guest_like
+      host_like = host_reviews.average(:like).to_i.round(2)
+      return (guest_like + host_like / 2).round(2)
+    else
+      return 0
+    end
+  end
 end

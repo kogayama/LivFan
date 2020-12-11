@@ -71,7 +71,8 @@
                     = image_tag @room.user.image.url, class: "avatar_more_large"
                   .Host__info__main__right
                     .Host__info__main__right__name.mb-1
-                      = @room.user.nickname
+                      = link_to user_path(@room.user) do
+                        = @room.user.nickname
                     .Host__info__main__right__review.mb-1
                       ☆
                     .Host__info__main__right__rooms.mb-1
