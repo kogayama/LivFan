@@ -18,10 +18,13 @@ class RoomImagesController < ApplicationController
 
     @room_image = RoomImage.find(params[:id])
     @room = @room_image.room
-
-    @room_image.destroy
-    @room_images = RoomImage.where(room_id: @room.id)
-    redirect_back(fallback_location: request.referer, notice: "削除しました")
+    if !(@room.done && @room.room_images.count == 1)
+      @room_image.destroy
+      @room_images = RoomImage.where(room_id: @room.id)
+      redirect_back(fallback_location: request.referer, notice: "削除しました。")
+    else
+      rredirect_back(fallback_location: request.referer, notice: "一枚の画像が必要です。")
+    end
   end
 
 end

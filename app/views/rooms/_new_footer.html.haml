@@ -1,0 +1,7 @@
+- add_full = !@room.done && !@room.room_images.blank?
+.RoomPost
+  = form_with model: @room do |f|
+    = form_with(model: @room, local: true) do |f|
+      = f.hidden_field :done, value: true
+      = f.submit "掲載する", id: "post_btn", class: "RoomPost__btn", disabled: !add_full
+
