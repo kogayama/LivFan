@@ -20,4 +20,5 @@
                 = image_tag image.image.url(), class: "RoomImage__posted__main__image"
                 = link_to room_room_image_path(image.room_id, image), remote: true, method: :delete, data: {confirm: "本当によろしいですか？"} do
                   %p 削除
-                
+
+=render 'new_footer'
