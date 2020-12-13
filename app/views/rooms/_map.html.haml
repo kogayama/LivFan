@@ -17,10 +17,9 @@
           "#{@room.longitude}" 
           );
           
-
-          mapInstance.setCenter(pos)
+          map.setCenter(pos)
           let marker = new google.maps.Marker({
-            map: mapInstance,
+            map: map,
             position: pos
           });
       }
