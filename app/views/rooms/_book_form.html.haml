@@ -28,16 +28,15 @@
       
 
 :javascript
+  let data = 
   $(function(){
-  let url = 'pickup_room__path(@room)';
-  $.ajax({
-    url: url,
-    dateType: 'json',
-    data: "#{@books}"
-    });
-    .done(function(data) {
-      $.each(data, function(arrID, arrValue) {
-        console.log(arrValue);
-      });
-    }
+    $.ajax({
+      url: '/rooms/"#{@room.id}"/pickup',
+      type: 'get',
+      dateType: 'json',
+      data: {}
+    })
+    .done(function(data) { 
+      console.log(data)
+    })
   })

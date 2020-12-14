@@ -52,8 +52,9 @@ class RoomsController < ApplicationController
   def pickup
     today = Date.today
     @books = @room.books.where("start_date >= ? OR end_date >= ?", today, today)
-
-    render jason: @books
+    respond_to do |format|
+      format.json
+    end
   end
 
   private
