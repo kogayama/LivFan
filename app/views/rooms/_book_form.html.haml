@@ -26,4 +26,18 @@
   .MyRoom__book__btn
     = f.submit "予約する", class: "BookBtn"
       
-    
+
+:javascript
+  $(function(){
+  let url = 'pickup_room__path(@room)';
+  $.ajax({
+    url: url,
+    dateType: 'json',
+    data: "#{@books}"
+    });
+    .done(function(data) {
+      $.each(data, function(arrID, arrValue) {
+        console.log(arrValue);
+      });
+    }
+  })

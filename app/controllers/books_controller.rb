@@ -18,7 +18,7 @@ class BooksController < ApplicationController
 
       flash[:notice] = "予約できました"
     end
-    redirect_to room
+    redirect_to root_path
   end
 
 

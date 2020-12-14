@@ -49,6 +49,13 @@ class RoomsController < ApplicationController
     @room_images = @room.room_images
   end
 
+  def pickup
+    today = Date.today
+    @books = @room.books.where("start_date >= ? OR end_date >= ?", today, today)
+
+    render jason: @books
+  end
+
   private
 
   def room_params
