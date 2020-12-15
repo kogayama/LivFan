@@ -28,15 +28,44 @@
       
 
 :javascript
-  let data = 
+
+  
+  
   $(function(){
+
+    var disableDates = [];
+
     $.ajax({
-      url: '/rooms/"#{@room.id}"/pickup',
-      type: 'get',
-      dateType: 'json',
-      data: {}
+      url: '/rooms/#{@room.id}/pickup',
+      dateType: 'json'
     })
     .done(function(data) { 
-      console.log(data)
+      $.each(data, function(arrID, arrValue) {
+        for(var date = new Date(arrValue.start_date);
+                date <= new Date(arrValue.end_date);
+                date.setDate(date.getDate() + 1)) {
+        disableDates.push(new Date(date))
+        }
+      });
+      console.log(disableDates)
+      
+      $('#datetimepicker7').datetimepicker({
+        beforeShowDate: function(date) {
+                        dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+                        return [$.inArray(dmy, disableDates) == -1];
+                      },
+        format: 'L'
+      });
+      $('#datetimepicker8').datetimepicker({
+        format: 'L',
+        useCurrent: false
+      });
+
+      $("#datetimepicker7").on("change.datetimepicker", function (e) {
+        $('#datetimepicker8').datetimepicker('minDate', e.date);
+      });
+      $("#datetimepicker8").on("change.datetimepicker", function (e) {
+          $('#datetimepicker7').datetimepicker('maxDate', e.date);
+      });
     })
   })
