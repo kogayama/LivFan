@@ -28,7 +28,7 @@
       
 
 :javascript
-
+  
   
   
   $(function(){
@@ -47,15 +47,29 @@
         disableDates.push(new Date(date))
         }
       });
-      console.log(disableDates)
+      
       
       $('#datetimepicker7').datetimepicker({
+        beforeShowDate: function (date) {
+                              dmy = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+                              return [$.inArray(dmy, disableDates) == -1];
+                              
+                            },
+
         beforeShowDate: function(date) {
-                        dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
-                        return [$.inArray(dmy, disableDates) == -1];
+                        var dmy = date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate();
+                        for(var i=0; i<disableDates.length; i++){
+                          if(disableDates[i] == dmy ){
+                            return [false];
+                          }else{
+                            continue;
+                          }
+                        } 
                       },
-        format: 'L'
+        minDate: 0,
+        format: 'YY-MM-DD'
       });
+
       $('#datetimepicker8').datetimepicker({
         format: 'L',
         useCurrent: false
