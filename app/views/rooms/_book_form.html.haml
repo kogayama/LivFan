@@ -2,9 +2,9 @@
   .MyRoom__book__title
     予約フォーム
   .MyRoom__book__form
-    = f.text_field :start_date, placeholder: "宿泊開始日", class: 'BookForm datetimepicker-input', :"data-target" => "#datetimepicker7", :"data-toggle" => "datetimepicker", id: "datetimepicker7"
+    = f.text_field :start_date, placeholder: "宿泊開始日", class: 'BookForm', id: "datepicker7"
     %span →
-    = f.text_field :end_date, placeholder: "宿泊終了日", class: 'BookForm datetimepicker-input', :"data-target" => "#datetimepicker8", :"data-toggle" => "datetimepicker", id: "datetimepicker8"
+    = f.text_field :end_date, placeholder: "宿泊終了日", class: 'BookForm', id: "datepicker8", disabled: true
 
   .MyRoom__book__price
     .MyRoom__book__price__one
@@ -29,8 +29,6 @@
 
 :javascript
   
-  
-  
   $(function(){
 
     var disableDates = [];
@@ -44,42 +42,36 @@
         for(var date = new Date(arrValue.start_date);
                 date <= new Date(arrValue.end_date);
                 date.setDate(date.getDate() + 1)) {
-        disableDates.push(new Date(date))
+        disableDates.push($.datepicker.formatDate('yy-m-d', date));
         }
       });
       
-      
-      $('#datetimepicker7').datetimepicker({
-        beforeShowDate: function (date) {
-                              dmy = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-                              return [$.inArray(dmy, disableDates) == -1];
-                              
-                            },
-
-        beforeShowDate: function(date) {
-                        var dmy = date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate();
-                        for(var i=0; i<disableDates.length; i++){
-                          if(disableDates[i] == dmy ){
-                            return [false];
-                          }else{
-                            continue;
-                          }
-                        } 
-                      },
+      $.datepicker.setDefaults( $.datepicker.regional[ "ja" ] );
+      $('#datepicker7').datepicker({
+        dateFormat: 'yy/mm/dd',
         minDate: 0,
-        format: 'YY-MM-DD'
+        maxDate: '3m',
+        beforeShowDay: function(date) {
+                        d = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+                        return [$.inArray(d, disableDates) == -1];
+                      },
+        onSelect: function(selected) {
+                  $('#datepicker8').datepicker("option", "minDate", selected);
+                  $('#datepicker8').attr("disabled", false);
+                  }
       });
 
-      $('#datetimepicker8').datetimepicker({
-        format: 'L',
-        useCurrent: false
-      });
-
-      $("#datetimepicker7").on("change.datetimepicker", function (e) {
-        $('#datetimepicker8').datetimepicker('minDate', e.date);
-      });
-      $("#datetimepicker8").on("change.datetimepicker", function (e) {
-          $('#datetimepicker7').datetimepicker('maxDate', e.date);
+      $('#datepicker8').datepicker({
+        dateFormat: 'yy/mm/dd',
+          minDate: 0,
+          maxDate: '3m',
+          beforeShowDay: function(date) {
+                        d = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+                        return [$.inArray(d, disableDates) == -1];
+                      },
+          onSelect: function(selected) {
+                  $('#datepicker7').datepicker("option", "maxDate", selected);
+                  }
       });
     })
   })
