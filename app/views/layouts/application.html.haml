@@ -8,11 +8,15 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application'
     %link{:href => "https://use.fontawesome.com/releases/v5.9.0/css/all.css", :rel => "stylesheet"}
-    
+    %link{:href => "http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css", :rel => "stylesheet"}
+    %script{:src => "http://code.jquery.com/jquery-1.8.3.js"}
+    %script{:src => "http://code.jquery.com/ui/1.9.2/jquery-ui.js"}
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"}
+
   %body
     = render "modules/navbar"
 
     .contents
       .container-fluid
 
-      = yield
+        = yield

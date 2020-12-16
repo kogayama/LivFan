@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
 
-  before_action :set_room, only: [:edit, :update, :show, :info, :facility, :image_post]
+  before_action :set_room, only: [:edit, :update, :show, :info, :facility, :image_post, :pickup]
 
   def index
     @rooms = current_user.rooms
@@ -47,6 +47,13 @@ class RoomsController < ApplicationController
 
   def image_post
     @room_images = @room.room_images
+  end
+
+  def pickup
+    today = Date.today
+    books = @room.books.where("start_date >= ? OR end_date >= ?", today, today)
+
+    render json: books
   end
 
   private

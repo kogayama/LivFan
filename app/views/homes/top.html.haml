@@ -1,2 +1,12 @@
 .Top
+  .RoomSearch
+    = form_tag  method: :get do
+
+      #carendar-position
+        = text_field_tag :search, params[:search], placeholder: "どこへ行きますか・", class: "form-control"
+
+
+        
+        = submit_tag "保存"
+
   
