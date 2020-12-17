@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
 
-  before_action :set_room, only: [:edit, :update, :show, :info, :facility, :image_post, :pickup]
+  before_action :set_room, only: [:edit, :update, :show, :info, :facility, :image_post, :pickup, :check]
 
   def index
     @rooms = current_user.rooms
@@ -52,11 +52,26 @@ class RoomsController < ApplicationController
   def pickup
     today = Date.today
     books = @room.books.where("start_date >= ? OR end_date >= ?", today, today)
-
     render json: books
   end
 
+  def check
+    start_date = Date.parse(params[:start_date])
+    end_date = Date.parse(params[:end_date])
+    info = {overlap: is_overlap(start_date, end_date, @room)}
+    render json: info
+  end
+  
   private
+
+  def is_overlap(start_date, end_date, room)
+    exist = room.books.where(['start_date > ? AND end_date < ?', start_date, end_date])
+    if exist.count > 0
+      return true
+    else
+      return false
+    end
+  end
 
   def room_params
     params.require(:room).permit(:home_type, :room_type, :member, :price, :bed, :bath, :name, :introduction, :location, :is_tv, :is_kitchen, :is_air, :is_heater, :is_wifi, :done, :pet, :parking, :breakfast).merge(user_id: current_user.id)

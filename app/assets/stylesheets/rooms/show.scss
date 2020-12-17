@@ -180,7 +180,8 @@
       }
     }
     .MyRoom__contents__right {
-      margin-top: 65px;
+      padding-top: 65px;
+      
       .MyRoom__price {
         border: inset 6px;
         &__title {
@@ -238,6 +239,13 @@
           .BookForm {
             width: 140px;
           }
+        }
+        .alert_book {
+          text-align: center;
+          margin-top: 10px;
+          color: red;
+          font-size: 14px;
+          font-weight: bold;
         }
         &__price {
           margin-top: 20px;
