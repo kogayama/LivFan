@@ -52,3 +52,10 @@ a:hover {
   opacity: 0.7;
   transform: scale(1.01, 1.01);
 }
+
+// RoomShow
+.fixed_sticky {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+}
