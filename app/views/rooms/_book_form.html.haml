@@ -5,7 +5,8 @@
     = f.text_field :start_date, placeholder: "宿泊開始日", class: 'BookForm', id: "datepicker7"
     %span →
     = f.text_field :end_date, placeholder: "宿泊終了日", class: 'BookForm', id: "datepicker8", disabled: true
-
+  .h4
+    %span#aaa
   .MyRoom__book__price
     .MyRoom__book__price__one
       .MyRoom__book__price__price__right
@@ -24,7 +25,7 @@
         ￥20000
   
   .MyRoom__book__btn
-    = f.submit "予約する", class: "BookBtn"
+    = f.submit "予約する", class: "BookBtn", id: 'not_permitted', disabled: true
       
 
 :javascript
@@ -70,8 +71,31 @@
                         return [$.inArray(d, disableDates) == -1];
                       },
           onSelect: function(selected) {
-                  $('#datepicker7').datepicker("option", "maxDate", selected);
-                  }
+                  $('#datepicker7').datepicker("option", "maxDate ", selected);
+                  
+                  var start_date = $('#datepicker7').datepicker('getDate');
+                  var end_date = $('#datepicker8').datepicker('getDate');
+
+                  var input = {
+                              'start_date': start_date,
+                              'end_date': end_date
+                            }
+                          
+                  $.ajax({
+                    url: '/rooms/#{@room.id}/check',
+                    data: input,
+                    dateType: 'json'
+                  })
+                  .done(function(data) {
+                    if(data.overlap) {
+                      $('#aaa').text("予約できません");
+                      $('#not_permitted').attr('disabled', true);
+                    } else {
+                      $('#aaa').text("");
+                      $('#not_permitted').attr('disabled', false);
+                    }
+                  })
+                }
       });
-    })
-  })
+    });
+  });

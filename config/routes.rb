@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get 'facility'
       get 'image_post'
       get 'pickup'
+      get 'check'
     end
     resources :room_images, only: [:create, :destroy]
     resources :books, only: [:create]
