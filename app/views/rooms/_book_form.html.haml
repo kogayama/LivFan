@@ -5,8 +5,7 @@
     = f.text_field :start_date, placeholder: "宿泊開始日", class: 'BookForm', id: "datepicker7"
     %span →
     = f.text_field :end_date, placeholder: "宿泊終了日", class: 'BookForm', id: "datepicker8", disabled: true
-  .h4
-    %span#aaa
+  .alert-book#alert_book
   .MyRoom__book__price
     .MyRoom__book__price__one
       .MyRoom__book__price__price__right
@@ -43,7 +42,7 @@
         for(var date = new Date(arrValue.start_date);
                 date <= new Date(arrValue.end_date);
                 date.setDate(date.getDate() + 1)) {
-        disableDates.push($.datepicker.formatDate('yy-m-d', date));
+        disableDates.push($.datepicker.formatDate('yy/m/d', date));
         }
       });
       
@@ -53,7 +52,7 @@
         minDate: 0,
         maxDate: '3m',
         beforeShowDay: function(date) {
-                        d = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+                        d = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
                         return [$.inArray(d, disableDates) == -1];
                       },
         onSelect: function(selected) {
@@ -67,7 +66,7 @@
           minDate: 0,
           maxDate: '3m',
           beforeShowDay: function(date) {
-                        d = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+                        d = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
                         return [$.inArray(d, disableDates) == -1];
                       },
           onSelect: function(selected) {
@@ -80,7 +79,6 @@
                               'start_date': start_date,
                               'end_date': end_date
                             }
-                          
                   $.ajax({
                     url: '/rooms/#{@room.id}/check',
                     data: input,
@@ -88,10 +86,10 @@
                   })
                   .done(function(data) {
                     if(data.overlap) {
-                      $('#aaa').text("予約できません");
+                      $('#alert_book').text("空きがありません");
                       $('#not_permitted').attr('disabled', true);
                     } else {
-                      $('#aaa').text("");
+                      $('#alert_book').text("");
                       $('#not_permitted').attr('disabled', false);
                     }
                   })

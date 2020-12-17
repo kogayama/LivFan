@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
 
-  before_action :set_room, only: [:edit, :update, :show, :info, :facility, :image_post, :pickup]
+  before_action :set_room, only: [:edit, :update, :show, :info, :facility, :image_post, :pickup, :check]
 
   def index
     @rooms = current_user.rooms
@@ -56,7 +56,6 @@ class RoomsController < ApplicationController
   end
 
   def check
-    
     start_date = Date.parse(params[:start_date])
     end_date = Date.parse(params[:end_date])
     info = {overlap: is_overlap(start_date, end_date, @room)}
@@ -66,8 +65,8 @@ class RoomsController < ApplicationController
   private
 
   def is_overlap(start_date, end_date, room)
-    be = room.books.where(['start_date > ? AND end_date < ?', start_date, end_date])
-    if be.count == 0
+    exist = room.books.where(['start_date > ? AND end_date < ?', start_date, end_date])
+    if exist.count > 0
       return true
     else
       return false
