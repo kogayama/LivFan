@@ -1,26 +1,25 @@
 %nav.navbar.navbar-expand-lg.navbar-light.bg-light.mb-3
-  .container
-    %a.navbar-brand{:href => "#"} Moment
-    %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
-      %span.navbar-toggler-icon
-    #navbarNavDropdown.collapse.navbar-collapse.justify-content-end
-      %ul.navbar-nav.navbar-right
-        - if (!user_signed_in?)
-          %li.nav-item
-            = link_to('ログイン', new_user_session_path, class: "nav-link")
-          %li.nav-item
-            = link_to('新規登録', new_user_registration_path, class: "nav-link")
-        - else
-          %li.nav-item.dropdown.nav-user-info
-            - if current_user.image.blank?
-              = image_tag "no-image.png", class: "avatar_medium"
-            - else
-              = image_tag current_user.image.url, class: "avatar_medium"
-            %a#navbarDropdownMenuLink.nav-link.dropdown-toggle.user-info{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-              = current_user.nickname
-            .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
-              = link_to('編集', edit_user_registration_path, class: "dropdown-item")
-              = link_to('編集', edit_user_path(current_user), class: "dropdown-item")
-              .dropdown-divider
-              = link_to('編集', edit_user_registration_path, class: "dropdown-item")
-              = link_to('ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item")
+  %a.navbar-brand{:href => "#"} Moment
+  %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarNavDropdown.collapse.navbar-collapse.justify-content-end
+    %ul.navbar-nav.navbar-right
+      - if (!user_signed_in?)
+        %li.nav-item
+          = link_to('ログイン', new_user_session_path, class: "nav-link")
+        %li.nav-item
+          = link_to('新規登録', new_user_registration_path, class: "nav-link")
+      - else
+        %li.nav-item.dropdown.nav-user-info
+          - if current_user.image.blank?
+            = image_tag "no-image.png", class: "avatar_medium"
+          - else
+            = image_tag current_user.image.url, class: "avatar_medium"
+          %a#navbarDropdownMenuLink.nav-link.dropdown-toggle.user-info{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            = current_user.nickname
+          .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
+            = link_to('編集', edit_user_registration_path, class: "dropdown-item")
+            = link_to('編集', edit_user_path(current_user), class: "dropdown-item")
+            .dropdown-divider
+            = link_to('編集', edit_user_registration_path, class: "dropdown-item")
+            = link_to('ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item")

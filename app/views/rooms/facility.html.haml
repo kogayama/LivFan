@@ -1,47 +1,50 @@
-.row
-  =render 'headbar'
-  .col-md-12
-    .RoomNew
-      .RoomNew__header
-        .RoomNew__header__title
-          館内施設
+= render "modules/navbar"
+.contents
+  .container-fluid
+    .row
+      =render 'headbar'
+      .col-md-12
+        .RoomNew
+          .RoomNew__header
+            .RoomNew__header__title
+              館内施設
 
-      .RoomNew__main
-        = form_with model: @room, local: true do |f|
-          .RoomNew__main__contents.RoomFacility
-            .RoomFacility__form
-              = f.label :is_tv, class: "FormField__label"
-              = f.check_box :is_tv
-            
-            .RoomFacility__form
-              = f.label :is_kitchen, class: "FormField__label"
-              = f.check_box :is_kitchen
+          .RoomNew__main
+            = form_with model: @room, local: true do |f|
+              .RoomNew__main__contents.RoomFacility
+                .RoomFacility__form
+                  = f.label :is_tv, class: "FormField__label"
+                  = f.check_box :is_tv
+                
+                .RoomFacility__form
+                  = f.label :is_kitchen, class: "FormField__label"
+                  = f.check_box :is_kitchen
 
-            .RoomFacility__form
-              = f.label :is_air, class: "FormField__label"
-              = f.check_box :is_air
+                .RoomFacility__form
+                  = f.label :is_air, class: "FormField__label"
+                  = f.check_box :is_air
 
-            .RoomFacility__form
-              = f.label :is_heater, class: "FormField__label"
-              = f.check_box :is_heater
+                .RoomFacility__form
+                  = f.label :is_heater, class: "FormField__label"
+                  = f.check_box :is_heater
 
-            .RoomFacility__form
-              = f.label :is_wifi, class: "FormField__label"
-              = f.check_box :is_wifi
+                .RoomFacility__form
+                  = f.label :is_wifi, class: "FormField__label"
+                  = f.check_box :is_wifi
 
-            .RoomFacility__form
-              = f.label :pet, class: "FormField__label"
-              = f.check_box :pet
+                .RoomFacility__form
+                  = f.label :pet, class: "FormField__label"
+                  = f.check_box :pet
 
-            .RoomFacility__form
-              = f.label :parking, class: "FormField__label"
-              = f.check_box :parking
+                .RoomFacility__form
+                  = f.label :parking, class: "FormField__label"
+                  = f.check_box :parking
 
-            .RoomFacility__form
-              = f.label :breakfast, class: "FormField__label"
-              = f.check_box :breakfast
+                .RoomFacility__form
+                  = f.label :breakfast, class: "FormField__label"
+                  = f.check_box :breakfast
 
-          .RoomNewForm__btn
-            = f.submit class: 'Btn-form'
+              .RoomNewForm__btn
+                = f.submit class: 'Btn-form'
 
-=render 'new_footer'
+    =render 'new_footer'
