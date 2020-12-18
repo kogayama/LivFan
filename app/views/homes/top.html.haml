@@ -1,15 +1,44 @@
-= render "modules/navbar"
-.contents
-  .container-fluid
-    .Top
-      .RoomSearch
-        = form_tag  method: :get do
+-# .Opening
+.BackImage
+  = render "modules/navbar"
+  %p
+    「自分らしさ」に
+    %br
+      出会おう。
 
-          #carendar-position
-            = text_field_tag :search, params[:search], placeholder: "どこへ行きますか・", class: "form-control"
+  .contents
+    .container-fluid
+      .Top
+        .RoomSearch
+          = form_tag do
+            .SearchForm__contents.form-row
+              .SearchForm.form-group
+                = text_field_tag :search, params[:search],  placeholder: "どこへ行きますか・", class: "SearchForm__location form-control"
+              
+              .SearchForm__line
 
+              .SearchForm.form-group
+                = text_field_tag :search, params[:search],  placeholder: "チェックイン", class: "SearchForm__checkin form-control"
+              .SearchForm__arrow
+                →
+              .SearchForm.form-group
+                = text_field_tag :search, params[:search],  placeholder: "チェックアウト", class: "SearchForm__checkout form-control"
+              
+              .SearchForm__line
 
-            
-            = submit_tag "保存"
+              .SearchForm.form-group 
+                = text_field_tag :search, params[:search],  placeholder: "人数", class: "SearchForm__members form-control"
+              
+              .SearchForm__line
 
-      
+              = button_tag type: 'submit', class: 'SearchForm__btn' do
+                = icon('fas', 'search')
+:javascript
+  $(function() {
+    setTimeout(function(){
+      $('.BackImage').fadeIn(1600);
+    },1000);
+    setTimeout(function(){
+      $('.Opening').fadeOut(800);
+    },800);
+  });

@@ -1,0 +1,79 @@
+.Opening {
+  height: 100%;
+  background-image: url(handle.png);
+  background-size:  cover;
+}
+.BackImage {
+  width: 100vw;
+  height: 1000px;
+  background-image: url(community.jpg);    /* 背景画像指定 */
+  background-size:  100% auto;
+  background-color:rgba(255,255,255,0.6);
+  background-blend-mode:lighten;
+  position: relative;
+  background-repeat: no-repeat;
+  & p {
+    position: absolute;
+    color: black;
+    font-weight: bold;
+    top: 340px;
+    left: 180px;
+    font-size: 45px;
+  }
+}
+.Top {
+  .SearchForm__contents {
+    position: absolute;
+    top: 180px;
+    left: 310px;
+    background: white;
+    border: 3px solid lightgrey;
+    height: 70px;
+    padding: 3px;
+    border-radius: 50px;
+    .SearchForm {
+      &__location {
+        width: 350px;
+        height: 58px;
+        border-radius: 50px;
+        border-color: white;
+      }
+      &__checkin {
+        width: 135px;
+        height: 58px;
+        border-radius: 50px;
+        border-color: white;
+      }
+      &__checkout {
+        width: 135px;
+        height: 58px;
+        border-radius: 50px;
+        border-color: white;
+      }
+      &__members {
+        width: 90px;
+        height: 58px;
+        border-radius: 50px;
+        border-color: white;
+      }
+      &__btn {
+        width: 45px;
+        height: 45px;
+        border-radius: 100%;
+        border-color: black;
+        background-color: whitesmoke;
+        margin: 6px 6px 0;
+      }
+      &__line {
+        width: 1px;
+        height: 43px;
+        background-color: gray;
+        margin-top: 9px;
+      }
+      &__arrow {
+        padding-top: 18px;
+      }
+    }
+  }
+}
+

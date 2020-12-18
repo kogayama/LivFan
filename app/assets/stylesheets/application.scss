@@ -2,9 +2,7 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "bootstrap";
-@import "modules/devise";
-@import "modules/shared";
-@import "modules/review_form";
+@import "homes/top";
 @import "rooms/show";
 @import "rooms/new";
 @import "rooms/index";
@@ -12,6 +10,9 @@
 @import "users/edit";
 @import "users/show";
 @import "users/mybook";
+@import "modules/devise";
+@import "modules/shared";
+@import "modules/review_form";
 @import "tempusdominus-bootstrap-4.css";
 
 body {
