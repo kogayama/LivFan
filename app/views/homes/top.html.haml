@@ -18,11 +18,11 @@
               .SearchForm__line
 
               .SearchForm.form-group
-                = text_field_tag :search, params[:search],  placeholder: "チェックイン", class: "SearchForm__checkin form-control"
+                = text_field_tag :search, params[:search],  placeholder: "チェックイン", class: "SearchForm__checkin form-control", id: "search_checkin"
               .SearchForm__arrow
                 →
               .SearchForm.form-group
-                = text_field_tag :search, params[:search],  placeholder: "チェックアウト", class: "SearchForm__checkout form-control"
+                = text_field_tag :search, params[:search],  placeholder: "チェックアウト", class: "SearchForm__checkout form-control", id: "search_checkout"
               
               .SearchForm__line
 
@@ -42,3 +42,24 @@
       $('.Opening').fadeOut(800);
     },800);
   });
+
+  $('#search_checkin').datepicker({
+        dateFormat: 'yy/mm/dd',
+        minDate: 0,
+        maxDate: '6m',
+        
+        onSelect: function(selected) {
+                    $('#search_checkout').datepicker("option", "minDate", selected);
+                    $('#search_checkout').attr("disabled", false);
+                  }
+      });
+  $('#search_checkout').datepicker({
+        dateFormat: 'yy/mm/dd',
+        minDate: 0,
+        maxDate: '6m',
+        
+        onSelect: function(selected) {
+                    $('#search_checkin').datepicker("option", "maxDate", selected);
+                    $('#search_checkin').attr("disabled", false);
+                  }
+      });

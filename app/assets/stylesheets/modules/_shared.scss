@@ -31,9 +31,9 @@
 .navbar {
   padding: 10px 50px;
   background-color: #FFFFFF;
-  // position: fixed;
-  // top: 0;
-  // width: 100%;
+  top: 0;
+  position: sticky;
+  z-index: 10000;
 }
 
 .navbar-light {

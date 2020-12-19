@@ -1,0 +1,68 @@
+= render "modules/navbar"
+
+.SearchPage
+  .SearchPage__left
+    .SearchPage__left__head.js-acc-single
+      .SearchPage__left__head__item.js_menu_item
+        %h2.SearchPage__left__head__title.js_menu_title 
+          部屋を絞る
+        .SearchPage__left__head__content
+          //// フィルター
+          .SearchPage__filter
+    .SearchPage__left__head.js-acc-single
+      .SearchPage__left__head__item.js_menu_item
+        %h2.SearchPage__left__head__title.js_menu_title 
+          部屋を絞る
+        .SearchPage__left__head__content
+          //// フィルター
+          .SearchPage__filter
+      
+    
+    .SearchPage__left__main
+
+  
+  .SearchPage__right
+    #map
+
+
+:javascript
+  // menu
+  const accSingleTriggers = document.querySelectorAll('.js_menu_title');
+
+  accSingleTriggers.forEach(trigger => trigger.addEventListener('click', toggleAccordion));
+
+  function toggleAccordion() {
+    const items = document.querySelectorAll('.js_menu_item');
+    const thisItem = this.parentNode;
+
+    items.forEach(item => {
+      if (thisItem == item) {
+        thisItem.classList.toggle('is-open');
+        return;
+      }
+      item.classList.remove('is-open');
+    });
+  }
+
+
+  //google map
+  let search_map
+  let geocoder
+
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 40.7828, lng:-73.9653},
+      zoom: 12,
+    });
+
+    marker = new google.maps.Marker({
+      position:  {lat: 40.7828, lng:-73.9653},
+      map: map
+    });
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+
+%script{src: "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBUH5AWFHCI0eiJULV6Q3pRx-hCNL24IUg&callback=initMap", async: "", defer: "defer"}

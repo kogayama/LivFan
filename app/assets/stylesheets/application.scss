@@ -3,6 +3,7 @@
 @import "font-awesome";
 @import "bootstrap";
 @import "homes/top";
+@import "homes/search";
 @import "rooms/show";
 @import "rooms/new";
 @import "rooms/index";
@@ -44,7 +45,7 @@ a:hover {
   font-size: 16px;
 }
 #map { 
-  height: 500px;
+  height: 100%;
   width: 100%;
 }
 
