@@ -4,7 +4,7 @@
   width: 100vw;
   .SearchPage__left {
     width: 850px;
-    height: 2000px;
+    height: 100%;
   }
   .popup {
     position: fixed;
@@ -58,6 +58,17 @@
     background-color: rgba(0,0,0,.8);
     z-index: 1;
     cursor: pointer;
+  }
+
+  .SearchResult {
+    &__room {
+      display: flex;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #fff;
+    }
   }
   
   

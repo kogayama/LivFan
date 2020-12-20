@@ -6,12 +6,40 @@
       .popup-inner
         #js-close-btn.close-btn
           %i.fas.fa-times
-        = link_to "#" do
-          = submit_tag "保存"
+        /// popup コンテンツ
+        = search_form_for @search, url: search_path, remote: true do |f|
+          = f.text_field :price_gteq, class: "form-control"
+          = f.text_field :price_lteq, class: "form-control"
       #js-black-bg.black-background
 
     %button#js-show-popup Show Popup
 
+    .SearchResult
+      - @arrRooms.each do |room|
+        .SearchResult__room
+          .SearchResult__room__left
+            = link_to room_path(room) do
+              - if room.room_images.length > 0
+                =image_tag room.room_images[0].image.url, width: 250, height: 250
+              - else
+                =image_tag "no-image.png", width: 250, height: 250
+          .SearchResult__room__right
+            .SearchResult__room__name
+              = link_to room_path(room) do
+                =room.name
+            .SearchResult__room__like
+              ☆☆☆☆☆
+            .SearchResult__room__info
+            .SearchResult__room__location
+              = room.location
+            .SearchResult__room__price
+              = room.price
+
+
+    
+      
+      
+      
 
   
   .SearchPage__right
@@ -59,6 +87,6 @@
     });
   }
 
-  google.maps.event.addDomListener(window, 'load', initialize);
+  
 
 %script{src: "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBUH5AWFHCI0eiJULV6Q3pRx-hCNL24IUg&callback=initMap", async: "", defer: "defer"}
