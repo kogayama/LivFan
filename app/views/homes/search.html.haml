@@ -2,23 +2,16 @@
 
 .SearchPage
   .SearchPage__left
-    .SearchPage__left__head.js-acc-single
-      .SearchPage__left__head__item.js_menu_item
-        %h2.SearchPage__left__head__title.js_menu_title 
-          部屋を絞る
-        .SearchPage__left__head__content
-          //// フィルター
-          .SearchPage__filter
-    .SearchPage__left__head.js-acc-single
-      .SearchPage__left__head__item.js_menu_item
-        %h2.SearchPage__left__head__title.js_menu_title 
-          部屋を絞る
-        .SearchPage__left__head__content
-          //// フィルター
-          .SearchPage__filter
-      
-    
-    .SearchPage__left__main
+    #js-popup.popup
+      .popup-inner
+        #js-close-btn.close-btn
+          %i.fas.fa-times
+        = link_to "#" do
+          = submit_tag "保存"
+      #js-black-bg.black-background
+
+    %button#js-show-popup Show Popup
+
 
   
   .SearchPage__right
@@ -27,22 +20,25 @@
 
 :javascript
   // menu
-  const accSingleTriggers = document.querySelectorAll('.js_menu_title');
+  function popupImage() {
+    var popup = document.getElementById('js-popup');
+    if(!popup) return;
 
-  accSingleTriggers.forEach(trigger => trigger.addEventListener('click', toggleAccordion));
+    var blackBg = document.getElementById('js-black-bg');
+    var closeBtn = document.getElementById('js-close-btn');
+    var showBtn = document.getElementById('js-show-popup');
 
-  function toggleAccordion() {
-    const items = document.querySelectorAll('.js_menu_item');
-    const thisItem = this.parentNode;
-
-    items.forEach(item => {
-      if (thisItem == item) {
-        thisItem.classList.toggle('is-open');
-        return;
-      }
-      item.classList.remove('is-open');
-    });
+    closePopUp(blackBg);
+    closePopUp(closeBtn);
+    closePopUp(showBtn);
+    function closePopUp(elem) {
+      if(!elem) return;
+      elem.addEventListener('click', function() {
+        popup.classList.toggle('is-show');
+      });
+    }
   }
+  popupImage();
 
 
   //google map
