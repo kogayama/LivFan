@@ -13,7 +13,7 @@
           = form_with url: search_path, method: "get", local: true do
             .SearchForm__contents.form-row
               .SearchForm.form-group
-                = text_field_tag :search, params[:search], placeholder: "どこへ行きますか・", class: "SearchForm__location form-control"
+                = text_field_tag :search, params[:search], placeholder: "あなたはどこへ行きますか", class: "SearchForm__location form-control"
               
               .SearchForm__line
 
@@ -27,6 +27,7 @@
               .SearchForm__line
 
               .SearchForm.form-group 
+                
                 -# = text_field_tag :search,  placeholder: "人数", class: "SearchForm__members form-control"
               
               .SearchForm__line

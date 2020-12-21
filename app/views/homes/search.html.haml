@@ -2,96 +2,95 @@
 
 .SearchPage
   .SearchPage__left
-    #js-popup.popup
-      .popup-inner
-        #js-close-btn.close-btn
-          %i.fas.fa-times
-        /// popup コンテンツ
-        = search_form_for @search, url: search_path, remote: true do |f|
-          = f.text_field :price_gteq, class: "form-control"
-          = f.text_field :price_lteq, class: "form-control"
-      #js-black-bg.black-background
 
-    %button#js-show-popup Show Popup
+    %a.SearchModal__btn{href: ""} 評価する
+    .SearchModal.js-modal
+      .SearchModal__background.SearchModal__close
+      .SearchModal__content
+
+        .Search__contents
+          = search_form_for @search, url: search_path do |f|
+            = f.text_field :price_gteq, class: "form-control"
+            = f.text_field :price_lteq, class: "form-control"
+
+            = text_field_tag :start_date, params[:start_date], readonly: true, placeholder: "チェックイン", class: "SearchForm__checkin form-control", id: "search_checkin"
+            = text_field_tag :end_date, params[:end_date], readonly: true,  placeholder: "チェックアウト", class: "SearchForm__checkout form-control", id: "search_checkout"
+
+            = check_box_tag "q[room_type_eq_any][]", "個室"
+            %p 個室
+            = check_box_tag "q[room_type_eq_any][]", "シェアルーム"
+            %p シェアルーム
+            = check_box_tag "q[room_type_eq_any][]", "貸し切り"
+            %p 貸し切り
+
+            = f.label :member, class: "RoomNewForm__label"
+            = f.select :member_gteq, [["1名", 1], ["2名", 2], ["3名", 3], ["4名以上", 4]], include_blank: "選択して下さい"
+
+            = f.label :bed, class: "RoomNewForm__label"
+            = f.select :bed_gteq, [["1つ", 1], ["2つ", 2], ["3つ", 3], ["4つ以上", 4]], include_blank: "選択して下さい"
+
+            = f.label :bath, class: "RoomNewForm__label"
+            = f.select :bath_gteq, [["1つ", 1], ["2つ", 2], ["3つ", 3], ["4つ以上", 4]], include_blank: "選択して下さい"
+
+            = check_box_tag "q[is_tv_eq]", true
+            %p TV
+
+            = check_box_tag "q[is_kitchen_eq]", true
+            %p キッチン
+
+            = check_box_tag "q[is_wifi_eq]", true
+            %p Wifi
+
+            = check_box_tag "q[is_heater_eq]", true
+            %p 暖房
+
+            = check_box_tag "q[is_air_eq]", true
+            %p エアコン
+
+            = f.submit "検索"
+
+
+        %a.SearchModal__close{href: ""} 閉じる
 
     
-    - if @arrRooms.present?
-      .SearchResult
-        - @arrRooms.each do |room|
-          .SearchResult__room
-            .SearchResult__room__left
-              = link_to room_path(room) do
-                - if room.room_images.length > 0
-                  =image_tag room.room_images[0].image.url, width: 250, height: 250
-                - else
-                  =image_tag "no-image.png", width: 250, height: 250
-            .SearchResult__room__right
-              .SearchResult__room__name
-                = link_to room_path(room) do
-                  =room.name
-              .SearchResult__room__like
-                ☆☆☆☆☆
-              .SearchResult__room__info
-              .SearchResult__room__location
-                = room.location
-              .SearchResult__room__price
-                = room.price
-    -else
-      .SearchResult__nothing
-        該当するお部屋が見つかりませんでした。
-  
-  
+
+    = render 'search_results', rooms: @arrRooms
+    
   .SearchPage__right
     #map
 
 
+
 :javascript
-  // menu
-  function popupImage() {
-    var popup = document.getElementById('js-popup');
-    if(!popup) return;
+  $(function(){
+    $('.SearchModal__btn').on('click',function(){
+        $('.js-modal').fadeIn();
+        return false;
+    });
+    $('.SearchModal__close').on('click',function(){
+        $('.js-modal').fadeOut();
+        return false;
+    });
+  });
 
-    var blackBg = document.getElementById('js-black-bg');
-    var closeBtn = document.getElementById('js-close-btn');
-    var showBtn = document.getElementById('js-show-popup');
-
-    closePopUp(blackBg);
-    closePopUp(closeBtn);
-    closePopUp(showBtn);
-    function closePopUp(elem) {
-      if(!elem) return;
-      elem.addEventListener('click', function() {
-        popup.classList.toggle('is-show');
-      });
-    }
-  }
-  popupImage();
-
-
-  //google map
+  
   let search_map
   let geocoder
 
   function initMap(){
     geocoder = new google.maps.Geocoder()
 
-    let location = {lat: 44.5403, lng: -78.5463}
+    let location = {lat: 35.2738, lng: 137.007}
     
-    let rooms_location = "#{@arrRooms}"
-    if (rooms_location > 0) {
-      location = {lat: rooms_location[0].latitude, lng: rooms_location[0].longitude}
-    }
     map = new google.maps.Map(document.getElementById('map'), {
       center: location,
-      zoom: 12,
+      zoom: 12
     });
 
-    rooms_location.forEach(function(room) {
-      marker = new google.maps.Marker({
-        position: {lat: room.latitude, lng: room.longitude},
-        map: map
-      });
-    })
+    marker = new google.maps.Marker({
+      position:  {lat: 40.7828, lng:-73.9653},
+      map: map
+    });
     
   }
 
