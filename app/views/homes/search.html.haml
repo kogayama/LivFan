@@ -14,33 +14,32 @@
 
     %button#js-show-popup Show Popup
 
-    .SearchResult
-      - @arrRooms.each do |room|
-        .SearchResult__room
-          .SearchResult__room__left
-            = link_to room_path(room) do
-              - if room.room_images.length > 0
-                =image_tag room.room_images[0].image.url, width: 250, height: 250
-              - else
-                =image_tag "no-image.png", width: 250, height: 250
-          .SearchResult__room__right
-            .SearchResult__room__name
-              = link_to room_path(room) do
-                =room.name
-            .SearchResult__room__like
-              ☆☆☆☆☆
-            .SearchResult__room__info
-            .SearchResult__room__location
-              = room.location
-            .SearchResult__room__price
-              = room.price
-
-
     
-      
-      
-      
-
+    - if @arrRooms.present?
+      .SearchResult
+        - @arrRooms.each do |room|
+          .SearchResult__room
+            .SearchResult__room__left
+              = link_to room_path(room) do
+                - if room.room_images.length > 0
+                  =image_tag room.room_images[0].image.url, width: 250, height: 250
+                - else
+                  =image_tag "no-image.png", width: 250, height: 250
+            .SearchResult__room__right
+              .SearchResult__room__name
+                = link_to room_path(room) do
+                  =room.name
+              .SearchResult__room__like
+                ☆☆☆☆☆
+              .SearchResult__room__info
+              .SearchResult__room__location
+                = room.location
+              .SearchResult__room__price
+                = room.price
+    -else
+      .SearchResult__nothing
+        該当するお部屋が見つかりませんでした。
+  
   
   .SearchPage__right
     #map
@@ -76,15 +75,24 @@
   function initMap(){
     geocoder = new google.maps.Geocoder()
 
+    let location = {lat: 44.5403, lng: -78.5463}
+    
+    let rooms_location = "#{@arrRooms}"
+    if (rooms_location > 0) {
+      location = {lat: rooms_location[0].latitude, lng: rooms_location[0].longitude}
+    }
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 40.7828, lng:-73.9653},
+      center: location,
       zoom: 12,
     });
 
-    marker = new google.maps.Marker({
-      position:  {lat: 40.7828, lng:-73.9653},
-      map: map
-    });
+    rooms_location.forEach(function(room) {
+      marker = new google.maps.Marker({
+        position: {lat: room.latitude, lng: room.longitude},
+        map: map
+      });
+    })
+    
   }
 
   

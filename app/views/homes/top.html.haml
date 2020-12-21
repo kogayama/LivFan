@@ -10,28 +10,28 @@
     .container-fluid
       .Top
         .RoomSearch
-          = form_with url: search_path, method: "get" do |f|
+          = form_with url: search_path, method: "get", local: true do
             .SearchForm__contents.form-row
               .SearchForm.form-group
-                = f.text_field :search, value: params[:search], placeholder: "どこへ行きますか・", class: "SearchForm__location form-control"
+                = text_field_tag :search, params[:search], placeholder: "どこへ行きますか・", class: "SearchForm__location form-control"
               
               .SearchForm__line
 
               .SearchForm.form-group
-                = f.text_field :start_date,  placeholder: "チェックイン", class: "SearchForm__checkin form-control", id: "search_checkin"
+                = text_field_tag :start_date, params[:start_date], placeholder: "チェックイン", class: "SearchForm__checkin form-control", id: "search_checkin"
               .SearchForm__arrow
                 →
               .SearchForm.form-group
-                = f.text_field :end_date,  placeholder: "チェックアウト", class: "SearchForm__checkout form-control", id: "search_checkout"
+                = text_field_tag :end_date, params[:end_date],  placeholder: "チェックアウト", class: "SearchForm__checkout form-control", id: "search_checkout"
               
               .SearchForm__line
 
               .SearchForm.form-group 
-                = f.text_field :search,  placeholder: "人数", class: "SearchForm__members form-control"
+                -# = text_field_tag :search,  placeholder: "人数", class: "SearchForm__members form-control"
               
               .SearchForm__line
 
-              = f.button type: "submit", class: 'SearchForm__btn' do
+              = button_tag type: "submit", class: 'SearchForm__btn' do
                 = icon('fas', 'search')
 :javascript
   $(function() {

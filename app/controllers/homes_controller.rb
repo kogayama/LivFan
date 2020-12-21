@@ -3,13 +3,12 @@ class HomesController < ApplicationController
   end
 
   def search
-    binding.pry
     if params[:search].present? && params[:search].strip != ""
       session[:location] = params[:search]
     end
 
     if session[:location] && session[:location] != ""
-      @rooms_location = Room.where(done: true).nearbys(session[:location], 30, units: :km)
+      @rooms_location = Room.where(done: true).near(session[:location], 30, order: 'distance')
     else
       @rooms_location = Room.where(done: true).all
     end
