@@ -23,7 +23,7 @@ class RoomImagesController < ApplicationController
       @room_images = RoomImage.where(room_id: @room.id)
       redirect_back(fallback_location: request.referer, notice: "削除しました。")
     else
-      rredirect_back(fallback_location: request.referer, notice: "一枚の画像が必要です。")
+      redirect_back(fallback_location: request.referer, notice: "一枚の画像が必要です。")
     end
   end
 
