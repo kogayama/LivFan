@@ -17,7 +17,8 @@
     %script{:src => "http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"}
 
   %body
-    %script{src: "https://maps.googleapis.com/maps/api/js?v=3.exp&key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMap", async: "", defer: "defer"}
+    
     = yield
+    %script{src: "https://maps.googleapis.com/maps/api/js?v=3.exp&key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMap", async: "", defer: "defer"}
 
     

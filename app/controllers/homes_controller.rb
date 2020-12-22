@@ -39,5 +39,10 @@ class HomesController < ApplicationController
         end
       end
     end
+    # if @arrRooms.length > 0
+    #   @first_room_latitude = @arrRooms[0].latitude
+    #   @first_room_longitude = @arrRooms[0].longitude
+    # end
+    
   end
 end
