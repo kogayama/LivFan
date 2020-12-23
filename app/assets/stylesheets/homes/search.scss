@@ -5,6 +5,17 @@
   .SearchPage__left {
     width: 850px;
     height: 100%;
+    &__head {
+      height: 60px;
+      text-align: center;
+      line-height: 60px;
+      & a {
+        border: 1px solid black;
+        border-radius: 5px;
+        font-size: 20px;
+        padding: 8px;
+      }
+    }
   }
   
   .SearchModal{
@@ -33,6 +44,130 @@
       width: 60%;
       height: 80%;
       overflow: scroll;
+    }
+  }
+
+  .Search__contents {
+    &__head {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .SearchField__price {
+      width: 550px;
+      margin: 0 auto 30px;
+      &__title {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 5px;
+        padding-left: 5px;
+      }
+      &__form {
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+        &__min {
+          width: 200px;
+        }
+        &__max {
+          width: 200px;
+        }
+        & span {
+          margin: auto 0;
+        }
+      }
+    }
+    .SearchField__date {
+      width: 550px;
+      margin: 0 auto 30px;
+      &__title {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 5px;
+        padding-left: 5px;
+      }
+      &__form {
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+        &__checkin {
+          width: 200px;
+        }
+        &__checkout {
+          width: 200px;
+        }
+        & span {
+          margin: auto 0;
+        }
+      }
+    }
+    .SearchField__room-type {
+      width: 550px;
+      margin: 0 auto 30px;
+      &__title {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 15px;
+        padding-left: 5px;
+      }
+      &__form {
+        display: flex;
+        justify-content: space-around;
+        &__one {
+          text-align: center;
+        }
+      }
+    }
+    .SearchField__info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      .SearchField__member {
+        width: 550px;
+        text-align: center;
+        &__title {
+          font-weight: bold;
+          font-size: 16px;
+          margin-bottom: 15px;
+          padding-left: 5px;
+        }
+        &__form {
+          & select {
+            height: 45px;
+          }
+        }
+      }
+      .SearchField__bed {
+        width: 550px;
+        text-align: center;
+        &__title {
+          font-weight: bold;
+          font-size: 16px;
+          margin-bottom: 15px;
+          padding-left: 5px;
+        } 
+        &__form {
+          & select {
+            height: 45px;
+          }
+        }
+      }
+      .SearchField__bath {
+        width: 550px;
+        text-align: center;
+        &__title {
+          font-weight: bold;
+          font-size: 16px;
+          margin-bottom: 15px;
+          padding-left: 5px;
+        }
+        &__form {
+          & select {
+            height: 45px;
+          }
+        }
+      }
     }
   }
   

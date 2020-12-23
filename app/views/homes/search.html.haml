@@ -2,35 +2,68 @@
 
 .SearchPage
   .SearchPage__left
-
-    %a.SearchModal__btn{href: ""} 評価する
+    .SearchPage__left__head
+      %a.SearchModal__btn{href: ""} 絞り込む
     .SearchModal.js-modal
       .SearchModal__background.SearchModal__close
       .SearchModal__content
 
         .Search__contents
+          
           = search_form_for @search, url: search_path do |f|
-            = f.text_field :price_gteq, class: "form-control"
-            = f.text_field :price_lteq, class: "form-control"
+            .Search__contents__head
+              絞り込む
+            .SearchField__price
+              .SearchField__price__title
+                料金
+              .SearchField__price__form
+                = f.text_field :price_gteq, class: "SearchField__price__form__min form-control"
+                %span
+                  〜
+                = f.text_field :price_lteq, class: "SearchField__price__form__max form-control"
 
-            = text_field_tag :start_date, params[:start_date], readonly: true, placeholder: "チェックイン", class: "SearchForm__checkin form-control", id: "search_checkin"
-            = text_field_tag :end_date, params[:end_date], readonly: true,  placeholder: "チェックアウト", class: "SearchForm__checkout form-control", id: "search_checkout"
+            .SearchField__date
+              .SearchField__date__title
+                日付
+              .SearchField__date__form
+                = text_field_tag :start_date, params[:start_date], readonly: true, placeholder: "チェックイン", class: "SearchField__date__form__checkin form-control", id: "search_checkin"
+                %span
+                  ⇨
+                = text_field_tag :end_date, params[:end_date], readonly: true,  placeholder: "チェックアウト", class: "SearchField__date__form__checkout form-control", id: "search_checkout"
 
-            = check_box_tag "q[room_type_eq_any][]", "個室"
-            %p 個室
-            = check_box_tag "q[room_type_eq_any][]", "シェアルーム"
-            %p シェアルーム
-            = check_box_tag "q[room_type_eq_any][]", "貸し切り"
-            %p 貸し切り
+            
+            .SearchField__room-type
+              .SearchField__room-type__title
+                お部屋タイプ
+              .SearchField__room-type__form
+                .SearchField__room-type__form__one
+                  = check_box_tag "q[room_type_eq_any][]", "個室"
+                  %p 個室
+                .SearchField__room-type__form__one
+                  = check_box_tag "q[room_type_eq_any][]", "シェアルーム"
+                  %p シェアルーム
+                .SearchField__room-type__form__one
+                  = check_box_tag "q[room_type_eq_any][]", "貸し切り"
+                  %p 貸し切り
 
-            = f.label :member, class: "RoomNewForm__label"
-            = f.select :member_gteq, [["1名", 1], ["2名", 2], ["3名", 3], ["4名以上", 4]], include_blank: "選択して下さい"
+            .SearchField__info
+              .SearchField__member
+                .SearchField__member__title
+                  宿泊人数  
+                .SearchField__member__form
+                  = f.select :member_gteq, [["1名", 1], ["2名", 2], ["3名", 3], ["4名以上", 4]], include_blank: "選択して下さい", class: "SearchField__member__form__input"
 
-            = f.label :bed, class: "RoomNewForm__label"
-            = f.select :bed_gteq, [["1つ", 1], ["2つ", 2], ["3つ", 3], ["4つ以上", 4]], include_blank: "選択して下さい"
-
-            = f.label :bath, class: "RoomNewForm__label"
-            = f.select :bath_gteq, [["1つ", 1], ["2つ", 2], ["3つ", 3], ["4つ以上", 4]], include_blank: "選択して下さい"
+              .SearchField__bed
+                .SearchField__bed__title
+                  ベッド数
+                .SearchField__bed__form
+                  = f.select :bed_gteq, [["1つ", 1], ["2つ", 2], ["3つ", 3], ["4つ以上", 4]], include_blank: "選択して下さい", class: "SearchField__bed__form__input"
+              
+              .SearchField__bath
+                .SearchField__bath__title
+                  シャワー数
+                .SearchField__bath__form
+                  = f.select :bath_gteq, [["1つ", 1], ["2つ", 2], ["3つ", 3], ["4つ以上", 4]], include_blank: "選択して下さい", class: "SearchField__bath__form__input"
 
             = check_box_tag "q[is_tv_eq]", true
             %p TV
@@ -85,7 +118,7 @@
       zoom: 11
     });
 
-    
+
     
     array.forEach(function(room) {
       let marker = new google.maps.Marker({
