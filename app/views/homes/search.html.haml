@@ -55,6 +55,7 @@
     = render 'search_results', rooms: @arrRooms
     
   .SearchPage__right
+  
     #map{ data: { turbolinks: false } }
 
 :javascript
@@ -75,24 +76,29 @@
     let location = {lat: 35.2738, lng: 137.007}
     
     if("#{@arrRooms}".length > 0) {
+      console.log("#{@arrRooms}")
       location = {lat: #{@arrRooms[0].latitude}, lng: #{@arrRooms[0].longitude}}
     }
-    
-     map = new google.maps.Map(document.getElementById('map'), {
+
+    map = new google.maps.Map(document.getElementById('map'), {
       center: location,
       zoom: 11
     });
 
-    $.each("#{@arrRooms}", function(room){
-      markerLatLng = new google.maps.LatLng({
-        lat: room.latitude,
-        lng: room.longitude
-      });
-      
+    
+    
+    array.forEach(function(room) {
       let marker = new google.maps.Marker({
-        position: markerLatLng,
+        position: {lat: room.latitude, lng: room.longitude},
         map: map
       });
-    })
-    
+
+      var infoWindow = new google.maps.InfoWindow({
+          content: '<div>ここです</div>'
+        });
+
+      infoWindow.open(map, marker);
+    });
   }
+  google.maps.event.addDomListener(window, 'load', initMap)
+    
