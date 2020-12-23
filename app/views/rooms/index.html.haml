@@ -1,46 +1,49 @@
-.row
-  .col-md-3
-    =render 'modules/sidebar'
-  
-  .col-md-7
-    .Roomlist
-      - @rooms.each do |room|
-        %article.Roomlist__card
-          .Roomlist__card__header
-            %figure.Roomlist__card__header__image
-              - if room.room_images.length > 0
-                =image_tag room.room_images[0].image.url, width: 250, height: 250
-              - else
-                =image_tag "no-image.png", width: 250, height: 250
-            .Roomlist__card__header__title
-              = link_to room_path(room.id) do
-                .Roomlist__card__header__title__name
-                  =room.name
-              = link_to info_room_path(room) do
-                .Roomlist__card__header__title__edit
-                  編集
-              
+= render "modules/navbar"
+.contents
+  .container-fluid
+    .row
+      .col-md-3
+        =render 'modules/sidebar'
+      
+      .col-md-7
+        .Roomlist
+          - @rooms.each do |room|
+            %article.Roomlist__card
+              .Roomlist__card__header
+                %figure.Roomlist__card__header__image
+                  - if room.room_images.length > 0
+                    =image_tag room.room_images[0].image.url, width: 250, height: 250
+                  - else
+                    =image_tag "no-image.png", width: 250, height: 250
+                .Roomlist__card__header__title
+                  = link_to room_path(room.id) do
+                    .Roomlist__card__header__title__name
+                      =room.name
+                  = link_to info_room_path(room) do
+                    .Roomlist__card__header__title__edit
+                      編集
+                  
 
-          .Roomlist__card__body
-            .Roomlist__card__body__review
-              - if room.guest_reviews.count > 0
-                .Roomlist__card__body__review__star{id: "star-rate-#{room.id}"}
-                  :javascript
-                    $('#star-rate-#{room.id}').raty({
-                      
-                      starOff:  "#{asset_path('star-off.png')}",
-                      starOn : "#{asset_path('star-on.png')}",
-                      starHalf: "#{asset_path('star-half.png')}",
-                      readOnly: true,
-                      score: "#{room.like_ave}",
-                    });
-                .Roomlist__card__body__review__info
-                  = room.like_ave
-                  %span /
-                  = "#{room.guest_reviews.count}件"
-              - else
-                .Roomlist__card__body__review__no-star
-                  評価がありません。
-            %p.Roomlist__card__body__location
-              = room.location
-            
+              .Roomlist__card__body
+                .Roomlist__card__body__review
+                  - if room.guest_reviews.count > 0
+                    .Roomlist__card__body__review__star{id: "star-rate-#{room.id}"}
+                      :javascript
+                        $('#star-rate-#{room.id}').raty({
+                          
+                          starOff:  "#{asset_path('star-off.png')}",
+                          starOn : "#{asset_path('star-on.png')}",
+                          starHalf: "#{asset_path('star-half.png')}",
+                          readOnly: true,
+                          score: "#{room.like_ave}",
+                        });
+                    .Roomlist__card__body__review__info
+                      = room.like_ave
+                      %span /
+                      = "#{room.guest_reviews.count}件"
+                  - else
+                    .Roomlist__card__body__review__no-star
+                      評価がありません。
+                %p.Roomlist__card__body__location
+                  = room.location
+                

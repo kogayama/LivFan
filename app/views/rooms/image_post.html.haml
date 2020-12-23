@@ -1,24 +1,27 @@
-.row
-  =render 'headbar'
-  .col-md-12
-    .RoomImage
-      .RoomNew__header
-        .RoomNew__header__title
-          写真
-      .RoomImage__main
-        = form_with url: room_room_images_path(@room), method: 'post', html: {multipart: true} do |f|
-          .RoomImage__main__preview
-            = f.file_field :image, name: "images[]", class: 'img_field', multiple: true, style: 'display:none;'
-            = image_tag "image_preview.gif", onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev',width: 400
-          .RoomImage__main__btn
-            = f.submit "写真を追加", class: "RoomImage__btn"
-      .RoomImage__posted#images
-        - if @room_images.count
-          - @room_images.each do |image|
-            .RoomImage__posted__main
-              = link_to image.image.url, :style=>"width:300", 'data-lightbox': image.image do
-                = image_tag image.image.url(), class: "RoomImage__posted__main__image"
-                = link_to room_room_image_path(image.room_id, image), remote: true, method: :delete, data: {confirm: "本当によろしいですか？"} do
-                  %p 削除
+= render "modules/navbar"
+.contents
+  .container-fluid
+    .row
+      =render 'headbar'
+      .col-md-12
+        .RoomImage
+          .RoomNew__header
+            .RoomNew__header__title
+              写真
+          .RoomImage__main
+            = form_with url: room_room_images_path(@room), method: 'post', html: {multipart: true} do |f|
+              .RoomImage__main__preview
+                = f.file_field :image, name: "images[]", class: 'img_field', multiple: true, style: 'display:none;'
+                = image_tag "image_preview.gif", onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev',width: 400
+              .RoomImage__main__btn
+                = f.submit "写真を追加", class: "RoomImage__btn"
+          .RoomImage__posted#images
+            - if @room_images.count
+              - @room_images.each do |image|
+                .RoomImage__posted__main
+                  = link_to image.image.url, :style=>"width:300", 'data-lightbox': image.image do
+                    = image_tag image.image.url(), class: "RoomImage__posted__main__image"
+                    = link_to room_room_image_path(image.room_id, image), remote: true, method: :delete, data: {confirm: "本当によろしいですか？"} do
+                      %p 削除
 
-=render 'new_footer'
+    =render 'new_footer'

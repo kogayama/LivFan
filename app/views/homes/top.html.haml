@@ -1,12 +1,66 @@
-.Top
-  .RoomSearch
-    = form_tag  method: :get do
+-# .Opening
+.BackImage
+  = render "modules/navbar"
+  %p
+    「自分らしさ」に
+    %br
+      出会おう。
 
-      #carendar-position
-        = text_field_tag :search, params[:search], placeholder: "どこへ行きますか・", class: "form-control"
+  .contents
+    .container-fluid
+      .Top
+        .RoomSearch
+          = form_with url: search_path, method: "get", local: true do
+            .SearchForm__contents.form-row
+              .SearchForm.form-group
+                = text_field_tag :search, params[:search], placeholder: "あなたはどこへ行きますか", class: "SearchForm__location form-control"
+              
+              .SearchForm__line
 
+              .SearchForm.form-group
+                = text_field_tag :start_date, params[:start_date], placeholder: "チェックイン", class: "SearchForm__checkin form-control", id: "search_checkin"
+              .SearchForm__arrow
+                →
+              .SearchForm.form-group
+                = text_field_tag :end_date, params[:end_date],  placeholder: "チェックアウト", class: "SearchForm__checkout form-control", id: "search_checkout"
+              
+              .SearchForm__line
 
+              .SearchForm.form-group 
+                
+                -# = text_field_tag :search,  placeholder: "人数", class: "SearchForm__members form-control"
+              
+              .SearchForm__line
+
+              = button_tag type: "submit", class: 'SearchForm__btn' do
+                = icon('fas', 'search')
+:javascript
+  $(function() {
+    setTimeout(function(){
+      $('.BackImage').fadeIn(1600);
+    },1000);
+    setTimeout(function(){
+      $('.Opening').fadeOut(800);
+    },800);
+  });
+
+  $('#search_checkin').datepicker({
+        dateFormat: 'yy/mm/dd',
+        minDate: 0,
+        maxDate: '6m',
         
-        = submit_tag "保存"
-
-  
+        onSelect: function(selected) {
+                    $('#search_checkout').datepicker("option", "minDate", selected);
+                    $('#search_checkout').attr("disabled", false);
+                  }
+      });
+  $('#search_checkout').datepicker({
+        dateFormat: 'yy/mm/dd',
+        minDate: 0,
+        maxDate: '6m',
+        
+        onSelect: function(selected) {
+                    $('#search_checkin').datepicker("option", "maxDate", selected);
+                    $('#search_checkin').attr("disabled", false);
+                  }
+      });

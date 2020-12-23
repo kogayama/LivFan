@@ -1,86 +1,89 @@
-.row
-  .col-md-3
-    =render 'modules/sidebar'
-  .col-md-9
-    - @mybooks.each do |book|
-      .Mybook
-        .Mybook__left
-          .Mybook__left__image
-            = link_to room_path(book.room.id) do
-              - if book.room.room_images.length > 0
-                =image_tag book.room.room_images[0].image.url, class: "Mybook__left__image__one"
-              - else
-                =image_tag "no-image.png", class: "Mybook__left__image__one"
-          
-          .Mybook__left__main
-            .Mybook__left__main__date
-              .Mybook__left__main__date__checkin
-                = book.start_date.strftime("%Y/%m/%d")
-              %span ~
-              .Mybook__left__main__date__checkout
-                = book.end_date.strftime("%Y/%m/%d")
-            = link_to room_path(book.room.id) do
-              .Mybook__left__main__title
-                =book.room.name
-            .Mybook__left__main__user
-              .Mybook__left__main__user__title
-                ホスト:
-              .Mybook__left__main__user__image
-                - if book.room.user.image.present?
-                  = image_tag book.room.user.image.url, class: "avatar_small"
-                - else
-                  = image_tag "no-image.png", class: "avatar_small"
-              = link_to user_path(book.room.user.id), class: "Mybook__left__main__user__nickname" do
-                = book.room.user.nickname
-        .Mybook__right
-          = link_to room_path(book.room.id), class: "Mybook__right__edit" do
-            確認
-          - if !(book.guest_review)
-            .Mybook__right__review
-              %a.js-modal-open{href: "", "data-target": "Modal_#{book.id}"} 評価する
-              .modal.js-modal{id: "Modal_#{book.id}"}
-                .modal__bg.js-modal-close
-                .modal__content
-                  .ReviewForm
-                    = form_for (current_user.guest_reviews.new) do |f|
-                      .ReviewForm__contents
+= render "modules/navbar"
+.contents
+  .container-fluid
+    .row
+      .col-md-3
+        =render 'modules/sidebar'
+      .col-md-9
+        - @mybooks.each do |book|
+          .Mybook
+            .Mybook__left
+              .Mybook__left__image
+                = link_to room_path(book.room.id) do
+                  - if book.room.room_images.length > 0
+                    =image_tag book.room.room_images[0].image.url, class: "Mybook__left__image__one"
+                  - else
+                    =image_tag "no-image.png", class: "Mybook__left__image__one"
+              
+              .Mybook__left__main
+                .Mybook__left__main__date
+                  .Mybook__left__main__date__checkin
+                    = book.start_date.strftime("%Y/%m/%d")
+                  %span ~
+                  .Mybook__left__main__date__checkout
+                    = book.end_date.strftime("%Y/%m/%d")
+                = link_to room_path(book.room.id) do
+                  .Mybook__left__main__title
+                    =book.room.name
+                .Mybook__left__main__user
+                  .Mybook__left__main__user__title
+                    ホスト:
+                  .Mybook__left__main__user__image
+                    - if book.room.user.image.present?
+                      = image_tag book.room.user.image.url, class: "avatar_small"
+                    - else
+                      = image_tag "no-image.png", class: "avatar_small"
+                  = link_to user_path(book.room.user.id), class: "Mybook__left__main__user__nickname" do
+                    = book.room.user.nickname
+            .Mybook__right
+              = link_to room_path(book.room.id), class: "Mybook__right__edit" do
+                確認
+              - if !(book.guest_review)
+                .Mybook__right__review
+                  %a.js-modal-open{href: "", "data-target": "Modal_#{book.id}"} 評価する
+                  .modal.js-modal{id: "Modal_#{book.id}"}
+                    .modal__bg.js-modal-close
+                    .modal__content
+                      .ReviewForm
+                        = form_for (current_user.guest_reviews.new) do |f|
+                          .ReviewForm__contents
 
-                        .ReviewForm__contents__form
-                          .ReviewForm__contents__header
-                            = f.label :title, class: "ReviewForm__contents__header__label"
-                            %span.ReviewForm__contents__header__require 〇〇文字まで
-                          = f.text_field :title, class: "ReviewForm__contents__title mb-2 p-2"
-                        .ReviewForm__contents__form
-                          .ReviewForm__contents__header
-                            = f.label :comment, class: "ReviewForm__contents__header__label"
-                            %span.ReviewForm__contents__header__require 〇〇文字まで
-                          = f.text_area :comment, rows: 10, class: "ReviewForm__contents__comment mb-4 p-2"
+                            .ReviewForm__contents__form
+                              .ReviewForm__contents__header
+                                = f.label :title, class: "ReviewForm__contents__header__label"
+                                %span.ReviewForm__contents__header__require 〇〇文字まで
+                              = f.text_field :title, class: "ReviewForm__contents__title mb-2 p-2"
+                            .ReviewForm__contents__form
+                              .ReviewForm__contents__header
+                                = f.label :comment, class: "ReviewForm__contents__header__label"
+                                %span.ReviewForm__contents__header__require 〇〇文字まで
+                              = f.text_area :comment, rows: 10, class: "ReviewForm__contents__comment mb-4 p-2"
 
-                        .ReviewForm__contents__form
-                          .ReviewForm__contents__header.Review__star__header
-                            = f.label :like, "評価" ,id: "e", class: "ReviewForm__contents__header__label"
-                          .Review__star{id: "star_#{book.id}"}
-                            = f.hidden_field :like, id: "review_star"
+                            .ReviewForm__contents__form
+                              .ReviewForm__contents__header.Review__star__header
+                                = f.label :like, "評価" ,id: "e", class: "ReviewForm__contents__header__label"
+                              .Review__star{id: "star_#{book.id}"}
+                                = f.hidden_field :like, id: "review_star"
 
-                          = f.hidden_field :room_id, value: book.room.id
-                          = f.hidden_field :book_id, value: book.id
-                          = f.hidden_field :host_id, value: book.room.user.id
+                              = f.hidden_field :room_id, value: book.room.id
+                              = f.hidden_field :book_id, value: book.id
+                              = f.hidden_field :host_id, value: book.room.user.id
 
-                          
-                      = f.submit "投稿する", class: "ReviewForm__btn text-center"
-                %a.js-modal-close{href: ""} 閉じる
+                              
+                          = f.submit "投稿する", class: "ReviewForm__btn text-center"
+                    %a.js-modal-close{href: ""} 閉じる
 
 
-:javascript
-  document.addEventListener("turbolinks:load", function() {
-    var star_id = $(".Review__star[id]");
-    $(star_id).raty({
-      size     : 36,
-      starOff:  "#{asset_path('star-off.png')}",
-      starOn : "#{asset_path('star-on.png')}",
-      starHalf: "#{asset_path('star-half.png')}",
-      scoreName: 'guest_review[like]',
-      half: true,
-      score: 1
-    });
-  })
+    :javascript
+      document.addEventListener("turbolinks:load", function() {
+        var star_id = $(".Review__star[id]");
+        $(star_id).raty({
+          size     : 36,
+          starOff:  "#{asset_path('star-off.png')}",
+          starOn : "#{asset_path('star-on.png')}",
+          starHalf: "#{asset_path('star-half.png')}",
+          scoreName: 'guest_review[like]',
+          half: true,
+          score: 1
+        });
+      })

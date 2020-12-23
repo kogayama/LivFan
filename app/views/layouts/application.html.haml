@@ -6,17 +6,19 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    
     %link{:href => "https://use.fontawesome.com/releases/v5.9.0/css/all.css", :rel => "stylesheet"}
     %link{:href => "http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css", :rel => "stylesheet"}
+    %script{:src => "https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"}
+    %script{:src => "https://cdn.jsdelivr.net/npm/jquery-scrollify@1/jquery.scrollify.min.js"}
     %script{:src => "http://code.jquery.com/jquery-1.8.3.js"}
     %script{:src => "http://code.jquery.com/ui/1.9.2/jquery-ui.js"}
     %script{:src => "http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"}
 
   %body
-    = render "modules/navbar"
+    
+    = yield
+    %script{src: "https://maps.googleapis.com/maps/api/js?v=3.exp&key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMap", async: "", defer: "defer"}
 
-    .contents
-      .container-fluid
-
-        = yield
+    

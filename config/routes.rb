@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "homes#top"
+  get 'search', to: "homes#search"
   devise_for :users
   resources :users, only: [:edit, :update, :show] do
     member do
@@ -23,6 +24,6 @@ Rails.application.routes.draw do
 
   resources :guest_reviews, only: [:create, :destroy]
   resources :host_reviews, only: [:create, :destroy]
-    
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

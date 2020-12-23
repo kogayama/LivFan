@@ -28,15 +28,22 @@
 }
 
 // NAVBARS
+.navbar {
+  padding: 10px 50px;
+  background-color: #FFFFFF;
+  top: 0;
+  position: sticky;
+  z-index: 10000;
+}
+
 .navbar-light {
   background-color: #FFFFFF;
 }
 
 .navbar-light .navbar-brand {
   color: black;
-  font-size: 2.3em;
+  font-size: 30px;
   font-weight: 400;
-  font-family: 'Lobster'
 }
 
 .nav-user-info {

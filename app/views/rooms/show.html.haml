@@ -1,109 +1,111 @@
-.MyRoom
+= render "modules/navbar"
+.contents
+  .container-fluid
+    .MyRoom
+      .MyRoom__image
+        - @room_images.each do |image|
+          = image_tag image.image.url
+      .MyRoom__contents
+        .row
+          .offset-md-1.col-md-7
+            .MyRoom__contents__left
+              .MyRoom__info
+                .MyRoom__info__title
+                  = @room.name
 
-  .MyRoom__image
-    - @room_images.each do |image|
-      = image_tag image.image.url
-  .MyRoom__contents
-    .row
-      .offset-md-1.col-md-7
-        .MyRoom__contents__left
-          .MyRoom__info
-            .MyRoom__info__title
-              = @room.name
-
-            .MyRoom__info__introduction
-              = @room.introduction
-              
-            .MyRoom__info__info
-              = render 'icon'
-
-            .MyRoom__info__facility
-              .MyRoom__info__facility__title
-                ・館内設備
-              .MyRoom__info__facility__main
-                .MyRoom__info__facility__main__one
-                  - if @room.is_tv
-                    = icon('fas', 'tv')
-                    .MyRoom__info__facility__main__one__font
-                      TV完備
-                .MyRoom__info__facility__main__one
-                  - if @room.is_kitchen
-                    = icon('fas', 'cookie-bite')
-                    .MyRoom__info__facility__main__one__font
-                      キッチン完備
-                .MyRoom__info__facility__main__one
-                  - if @room.is_air
-                    = icon('fas', 'wind')
-                    .MyRoom__info__facility__main__one__font
-                      エアコン完備
-                .MyRoom__info__facility__main__one
-                  - if @room.is_heater
-                    = icon('fas', 'heading')
-                    .MyRoom__info__facility__main__one__font
-                      暖房完備
-                .MyRoom__info__facility__main__one
-                  - if @room.is_wifi
-                    = icon('fas', 'wifi')
-                    .MyRoom__info__facility__main__one__font
-                      無料Wifi
-                .MyRoom__info__facility__main__one
-                  - if @room.pet
-                    = icon('fas', 'dog')
-                    .MyRoom__info__facility__main__one__font
-                      ペット同伴可
-                .MyRoom__info__facility__main__one
-                  - if @room.parking
-                    = icon('fas', 'car')
-                    .MyRoom__info__facility__main__one__font
-                      駐車場有
-                .MyRoom__info__facility__main__one
-                  - if @room.breakfast
-                    = icon('fas', 'coffee')
-                    .MyRoom__info__facility__main__one__font
-                      朝食付き
-            
-            .MyRoom__info__host
-              .Host__info
-                .Host__info__header
-                  ホスト
-                .Host__info__main
-                  .Host__info__main__left
-                    = image_tag @room.user.image.url, class: "avatar_more_large"
-                  .Host__info__main__right
-                    .Host__info__main__right__name.mb-1
-                      = link_to user_path(@room.user) do
-                        = @room.user.nickname
-                    .Host__info__main__right__review.mb-1
-                      ☆
-                    .Host__info__main__right__rooms.mb-1
-                      = "掲載している部屋の数： #{@room.user.rooms.count}部屋"
- 
-            .MyRoom__info__location
-              .MyRoom__info__location__address
-                .MyRoom__info__location__address__title
-                  住所
-                .MyRoom__info__location__address__main
-                  = @room.location
-              = render 'map'
-              
-            .MyRoom__info__reviews
-              = render 'guest_reviews'
+                .MyRoom__info__introduction
+                  = @room.introduction
                   
+                .MyRoom__info__info
+                  = render 'icon'
 
+                .MyRoom__info__facility
+                  .MyRoom__info__facility__title
+                    ・館内設備
+                  .MyRoom__info__facility__main
+                    .MyRoom__info__facility__main__one
+                      - if @room.is_tv
+                        = icon('fas', 'tv')
+                        .MyRoom__info__facility__main__one__font
+                          TV完備
+                    .MyRoom__info__facility__main__one
+                      - if @room.is_kitchen
+                        = icon('fas', 'cookie-bite')
+                        .MyRoom__info__facility__main__one__font
+                          キッチン完備
+                    .MyRoom__info__facility__main__one
+                      - if @room.is_air
+                        = icon('fas', 'wind')
+                        .MyRoom__info__facility__main__one__font
+                          エアコン完備
+                    .MyRoom__info__facility__main__one
+                      - if @room.is_heater
+                        = icon('fas', 'heading')
+                        .MyRoom__info__facility__main__one__font
+                          暖房完備
+                    .MyRoom__info__facility__main__one
+                      - if @room.is_wifi
+                        = icon('fas', 'wifi')
+                        .MyRoom__info__facility__main__one__font
+                          無料Wifi
+                    .MyRoom__info__facility__main__one
+                      - if @room.pet
+                        = icon('fas', 'dog')
+                        .MyRoom__info__facility__main__one__font
+                          ペット同伴可
+                    .MyRoom__info__facility__main__one
+                      - if @room.parking
+                        = icon('fas', 'car')
+                        .MyRoom__info__facility__main__one__font
+                          駐車場有
+                    .MyRoom__info__facility__main__one
+                      - if @room.breakfast
+                        = icon('fas', 'coffee')
+                        .MyRoom__info__facility__main__one__font
+                          朝食付き
                 
-      .col-md-4
-        .MyRoom__contents__right.fixed_sticky
-          .MyRoom__price
-            .MyRoom__price__title
-              宿泊料金
-            .MyRoom__price__main
-              .MyRoom__price__main__price
-                = "￥#{@room.price}/泊"
-              .MyRoom__price__main__member
-                = "(#{@room.member}人まで)"
-              .MyRoom__price__main__check
-                ※時間厳守でお願いします。
-          .MyRoom__book
-            = render 'book_form'
-          
+                .MyRoom__info__host
+                  .Host__info
+                    .Host__info__header
+                      ホスト
+                    .Host__info__main
+                      .Host__info__main__left
+                        = image_tag @room.user.image.url, class: "avatar_more_large"
+                      .Host__info__main__right
+                        .Host__info__main__right__name.mb-1
+                          = link_to user_path(@room.user) do
+                            = @room.user.nickname
+                        .Host__info__main__right__review.mb-1
+                          ☆
+                        .Host__info__main__right__rooms.mb-1
+                          = "掲載している部屋の数： #{@room.user.rooms.count}部屋"
+    
+                .MyRoom__info__location
+                  .MyRoom__info__location__address
+                    .MyRoom__info__location__address__title
+                      住所
+                    .MyRoom__info__location__address__main
+                      = @room.location
+                  = render 'map'
+                  
+                .MyRoom__info__reviews
+                  = render 'guest_reviews'
+                      
+
+                    
+          .col-md-4
+            .MyRoom__contents__right.fixed_sticky
+              .MyRoom__price
+                .MyRoom__price__title
+                  宿泊料金
+                .MyRoom__price__main
+                  .MyRoom__price__main__price
+                    = "￥#{@room.price}/泊"
+                  .MyRoom__price__main__member
+                    = "(#{@room.member}人まで)"
+                  .MyRoom__price__main__check
+                    ※時間厳守でお願いします。
+              .MyRoom__book
+                = render 'book_form'
               
+                  
