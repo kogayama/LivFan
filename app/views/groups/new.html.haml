@@ -1,0 +1,4 @@
+= form_with model: @group, local: true do |f|
+  = f.text_field :concept, placeholder: "コンセプトを入力してください"
+  = f.text_area :introduction, placeholder: "紹介文"
+  = f.submit
