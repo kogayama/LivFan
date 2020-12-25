@@ -70,7 +70,10 @@
                       ホスト
                     .Host__info__main
                       .Host__info__main__left
-                        = image_tag @room.user.image.url, class: "avatar_more_large"
+                        - if current_user.image.blank?
+                          = image_tag "no-image.png", class: "avatar_more_large"
+                        - else
+                          = image_tag current_user.image.url, class: "avatar_more_large"
                       .Host__info__main__right
                         .Host__info__main__right__name.mb-1
                           = link_to user_path(@room.user) do
