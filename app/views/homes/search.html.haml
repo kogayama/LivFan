@@ -108,8 +108,7 @@
 
     let location = {lat: 35.2738, lng: 137.007}
     
-    if("#{@arrRooms}".length > 0) {
-      console.log("#{@arrRooms}")
+    if("#{@arrRooms}".length > 10) {
       location = {lat: #{@arrRooms[0].latitude}, lng: #{@arrRooms[0].longitude}}
     }
 
