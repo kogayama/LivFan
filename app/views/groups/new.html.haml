@@ -1,4 +1,17 @@
-= form_with model: @group, local: true do |f|
-  = f.text_field :concept, placeholder: "コンセプトを入力してください"
-  = f.text_area :introduction, placeholder: "紹介文"
-  = f.submit
+.GroupNew
+  .GroupNew__header
+    .GroupNew__header__contents
+      どんなグループを作る？
+  .GroupNew__main
+    = form_with model: @group, local: true do |f|
+      .GroupNew__form
+        .GroupNew__form__concept
+          = f.text_field :concept, placeholder: "コンセプトを入力してください", class: "GroupNew__form__concept__input"
+        .GroupNew__form__introduction
+          = f.text_area :introduction, placeholder: "紹介文", class: "GroupNew__form__introduction__input"
+        .GroupNew__form__submit
+          = f.submit "作成", class: "GroupNew__form__submit__btn"
+  .GroupNew__footer
+
+
+  
