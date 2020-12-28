@@ -21,6 +21,15 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
+  def join
+    @group = Group.find(params[:id])
+    if !@group.users.include?(current_user)
+      @group.users << current_user
+    else
+      render :show
+    end
+  end
+
   private
   def group_params
     params.require(:group).permit(:concept, :introduction, user_ids: [])

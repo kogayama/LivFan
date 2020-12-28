@@ -5,5 +5,7 @@ class CreateGroupUsers < ActiveRecord::Migration[6.0]
       t.references :user, foreign_key: true
       t.timestamps
     end
+
+    add_index :group_users, [:user_id, :group_id], unique: true
   end
 end

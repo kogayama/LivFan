@@ -1,2 +1,13 @@
-%h1 Groups#show
-%p Find me in app/views/groups/show.html.haml
+.GroupShow
+  .GroupShow__concept
+    = @group.concept
+    %p
+      = @group.introduction
+      -if !@group.users.include?(current_user)
+        = link_to join_group_path(@group.id) do
+          参加する
+      -else
+        %p 参加済みです
+      
+
+

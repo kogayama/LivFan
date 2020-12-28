@@ -1,0 +1,13 @@
+.GroupJoin
+  .GroupJoin__contents
+    = "「#{@group.concept}」に参加できました！"
+    %p 
+      早速、自己紹介をしてみましょう！
+
+  .GroupJoin__link
+    = link_to "#" do
+      .GroupJoin__link__btn
+        トークルームへ進む
+    = link_to mypage_user_path(current_user.id) do
+      .GroupJoin__link__btn
+        マイページへ戻る

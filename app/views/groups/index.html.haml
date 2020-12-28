@@ -1,2 +1,5 @@
-%h1 Groups#index
-%p Find me in app/views/groups/index.html.haml
+.GroupsIndex
+  - @groups.each do |group|
+    %p.GroupsIndex__concept
+      = link_to group_path(group.id) do
+        = group.concept
