@@ -25,7 +25,11 @@ Rails.application.routes.draw do
   resources :guest_reviews, only: [:create, :destroy]
   resources :host_reviews, only: [:create, :destroy]
 
-  resources :groups, only: [:index, :new, :create, :show]
+  resources :groups, only: [:index, :new, :create, :show] do
+    member do
+      get 'join'
+    end
+  end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

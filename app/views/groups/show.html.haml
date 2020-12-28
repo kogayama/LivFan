@@ -3,3 +3,11 @@
     = @group.concept
     %p
       = @group.introduction
+      -if !@group.users.include?(current_user)
+        = link_to join_group_path(@group.id) do
+          参加する
+      -else
+        %p 参加済みです
+      
+
+
