@@ -53,6 +53,15 @@
   justify-content: space-around;
 }
 
+.Link__host {
+  line-height: 35px;
+  align-items: center;
+  font-size: 12px;
+  border: 1px solid gray;
+  border-radius: 3px;
+  padding: 5px;
+}
+
 // Sidebar
 
 .Accountcard {

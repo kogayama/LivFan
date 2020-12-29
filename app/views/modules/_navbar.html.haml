@@ -3,7 +3,12 @@
   %a.navbar-brand{:href => "#"} LivFan
   %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
+  
+  
   #navbarNavDropdown.collapse.navbar-collapse.justify-content-end
+    = link_to "#" do
+      .Link__host
+        部屋を掲載する
     %ul.navbar-nav.navbar-right
       - if (!user_signed_in?)
         %li.nav-item
