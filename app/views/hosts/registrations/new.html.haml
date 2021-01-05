@@ -1,22 +1,102 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "hosts/shared/error_messages", resource: resource
-  = f.text_field :nickname, autofocus: true
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "hosts/shared/links"
+.HostRegist
+  .HostRegist__title
+    .HostRegist__title__contents
+      ホストとして登録
+  .HostRegist__main
+    .HostRegist__main__contents
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        .HostRegist__FormField
+          .HostRegist__FormField__label
+            = f.label :nickname
+          .HostRegist__FormField__form
+            = f.text_field :nickname, autofocus: true, class: "HostRegist__FormField__form__input"
+        
+        .HostRegist__FormField
+          .HostRegist__FormField__label
+            = f.label :email
+          .HostRegist__FormField__form
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "HostRegist__FormField__form__input"
+        
+        .HostRegist__FormField
+          .HostRegist__FormField__label
+            = f.label :password
+          .HostRegist__FormField__form
+            = f.password_field :password, autocomplete: "new-password", class: "HostRegist__FormField__form__input"
+
+        .HostRegist__FormField
+          .HostRegist__FormField__label
+            = f.label :password_confirmation
+          .HostRegist__FormField__form
+            = f.password_field :password_confirmation, autocomplete: "new-password", class: "HostRegist__FormField__form__input"
+        
+
+        .title
+          本人確認
+          
+          = f.fields_for :host_profile do |p|
+
+            .HostRegist__FormField
+              .HostRegist__FormField__label
+                = p.label :first_name, "お名前(全角)"
+              .HostRegist__FormField__nameForm
+                = p.text_field :first_name, placeholder: "例)山田", class: "HostRegist__FormField__nameForm__input"
+                = p.text_field :last_name, placeholder: "例)彩", class: "HostRegist__FormField__nameForm__input"
+
+            .HostRegist__FormField
+              .HostRegist__FormField__label
+                = p.label :last_name, "お名前カナ(全角)"
+              .HostRegist__FormField__nameForm
+                = p.text_field :first_name_kana, placeholder: "例)ヤマダ", class: "HostRegist__FormField__nameForm__input"
+                = p.text_field :last_name_kana, placeholder: "例)アヤ", class: "HostRegist__FormField__nameForm__input"
+
+            .HostRegist__FormField
+              .HostRegist__FormField__label
+                = p.label :birthday, "生年月日"
+              .HostRegist__FormField__birthForm
+                .ProfileNew.birthday-line
+                  != sprintf(p.date_select(:birthday, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1), prompt:"--", with_css_classes:'XXXXX', date_separator:'%s', class: "FormField__input ProfileNew__form"),'年','月')+'日'
+
+            .HostRegist__FormField
+              .HostRegist__FormField__label
+                = p.label :phone_number
+              .HostRegist__FormField__form
+                = p.text_field :phone_number, placeholder: "HostRegist__FormField__form__input"
+
+            .HostRegist__FormField
+              .HostRegist__FormField__label
+                = p.label :postcode, '郵便番号'
+              .HostRegist__FormField__form
+                = p.text_field :postcode, autocomplete: 'postcode', class: 'HostRegist__FormField__form__input'
+
+
+            .HostRegist__FormField
+              .HostRegist__FormField__label
+                = p.label :prefecture_name, '都道府県'
+              .HostRegist__FormField__form
+                = p.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'HostRegist__FormField__form__input'
+
+            .HostRegist__FormField
+              .HostRegist__FormField__label
+                = p.label :address_city, '市区町村'
+              .HostRegist__FormField__form
+                = p.text_field :address_city, autocomplete: 'address_city', class: 'HostRegist__FormField__form__input'
+
+            .HostRegist__FormField
+              .HostRegist__FormField__label
+                = p.label :address_street, '番地'
+              .HostRegist__FormField__form
+                = p.text_field :address_street, autocomplete: 'address_street', class: 'HostRegist__FormField__form__input'
+
+            .HostRegist__FormField
+              .HostRegist__FormField__label
+                = p.label :address_building, '建物'
+              .HostRegist__FormField__form
+                = p.text_field :address_building, autocomplete: 'address_building', class: 'HostRegist__FormField__form__input'
+
+
+        .HostRegist__FormField__submit
+          = f.submit "Sign up", class: "HostRegist__FormField__submit__btn"
+
+  .HostRegist__footer
+
+%script{:src => "//jpostal-1006.appspot.com/jquery.jpostal.js", :type => "text/javascript"}

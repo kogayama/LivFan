@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 class Hosts::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @host = Host.new
+    @profile = @host.build_host_profile
+  end
 
   # POST /resource
   # def create
@@ -38,12 +39,12 @@ class Hosts::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, host_profile_attributes: [:first_name, :last_name, :first_name_kana, :last_name_kana, :birthday, :phone_number, :postcode, :prefecture_code, :address_city, :address_street, :address_building, :sex, :introduction, :image]])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

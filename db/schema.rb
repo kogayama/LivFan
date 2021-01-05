@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_29_011602) do
+ActiveRecord::Schema.define(version: 2020_12_29_082835) do
 
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2020_12_29_011602) do
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "host_id", null: false
+    t.index ["host_id"], name: "index_host_profiles_on_host_id"
   end
 
   create_table "hosts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -148,6 +150,7 @@ ActiveRecord::Schema.define(version: 2020_12_29_011602) do
   add_foreign_key "books", "users"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
+  add_foreign_key "host_profiles", "hosts"
   add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "rooms"
   add_foreign_key "room_images", "rooms"
