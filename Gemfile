@@ -76,3 +76,5 @@ gem 'momentjs-rails'
 gem 'font-awesome-rails'
 
 gem 'ransack'
+
+gem 'jp_prefecture'
