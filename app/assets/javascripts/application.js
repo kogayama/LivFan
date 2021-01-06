@@ -6,9 +6,6 @@
 //= require turbolinks
 //= require jquery_ujs
 
-//= require activestorage
-//= require jquery.jpostal
-
 //= require moment
 //= require moment/ja.js
 //= require tempusdominus-bootstrap-4.js

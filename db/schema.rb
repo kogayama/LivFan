@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_29_082835) do
+ActiveRecord::Schema.define(version: 2020_12_25_192251) do
 
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -41,41 +41,6 @@ ActiveRecord::Schema.define(version: 2020_12_29_082835) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["concept"], name: "index_groups_on_concept", unique: true
-  end
-
-  create_table "host_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "first_name_kana", null: false
-    t.string "last_name_kana", null: false
-    t.date "birthday", null: false
-    t.string "phone_number", null: false
-    t.integer "postcode", null: false
-    t.string "prefecture_code", null: false
-    t.string "address_city", null: false
-    t.string "address_street", null: false
-    t.string "address_building"
-    t.integer "sex", null: false
-    t.text "introduction"
-    t.string "image"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "host_id", null: false
-    t.index ["host_id"], name: "index_host_profiles_on_host_id"
-  end
-
-  create_table "hosts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nickname", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_hosts_on_email", unique: true
-    t.index ["nickname"], name: "index_hosts_on_nickname", unique: true
-    t.index ["reset_password_token"], name: "index_hosts_on_reset_password_token", unique: true
   end
 
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -150,7 +115,6 @@ ActiveRecord::Schema.define(version: 2020_12_29_082835) do
   add_foreign_key "books", "users"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
-  add_foreign_key "host_profiles", "hosts"
   add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "rooms"
   add_foreign_key "room_images", "rooms"
