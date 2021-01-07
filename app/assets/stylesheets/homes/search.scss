@@ -172,15 +172,42 @@
   }
   
 
+  // 検索結果表示
 
   .SearchResult {
     &__room {
       display: flex;
-      border-top: 1px solid black;
-      border-bottom: 1px solid black;
+      border: 1px solid lightgray;
+      border-radius: 10px;
+      margin: 10px;
       padding: 10px;
       margin-bottom: 10px;
       background-color: #fff;
+      &__left {
+        &__img {
+          border-radius: 10px;
+        }
+      }
+      &__right {
+        padding: 10px 20px;
+        color: gray;
+        &__name {
+          font-size: 20px;
+          font-weight: bold;
+        }
+        &__like {
+
+        }
+        &__info {
+
+        }
+        &__location {
+
+        }
+        &__price {
+
+        }
+      }
     }
   }
   
@@ -193,4 +220,6 @@
     right: 0;
   }
 }
+
+
 

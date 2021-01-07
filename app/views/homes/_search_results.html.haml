@@ -5,19 +5,19 @@
         .SearchResult__room__left
           = link_to room_path(room) do
             - if room.room_images.length > 0
-              =image_tag room.room_images[0].image.url, width: 250, height: 250
+              =image_tag room.room_images[0].image.url, width: 250, height: 250, class: "SearchResult__room__left__img"
             - else
-              =image_tag "no-image.png", width: 250, height: 250
+              =image_tag "no-image.png", width: 250, height: 250, class: "SearchResult__room__left__img"
         .SearchResult__room__right
-          .SearchResult__room__name
+          .SearchResult__room__right__name
             = link_to room_path(room) do
               =room.name
-          .SearchResult__room__like
+          .SearchResult__room__right__like
             ☆☆☆☆☆
-          .SearchResult__room__info
-          .SearchResult__room__location
+          .SearchResult__room__right__info
+          .SearchResult__room__right__location
             = room.location
-          .SearchResult__room__price
+          .SearchResult__room__right__price
             = room.price
 -else
   .SearchResult__nothing
