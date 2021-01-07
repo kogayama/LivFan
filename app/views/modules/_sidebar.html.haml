@@ -31,6 +31,13 @@
   = link_to "#", class: "list-group-item list-group-item-action" do
     お気に入り
 
+.list-group.mb-4
+  
+  = link_to new_group_path, class: "list-group-item list-group-item-action" do
+    グループ作成
+  = link_to groups_path, class: "list-group-item list-group-item-action" do
+    グループ検索
+
 .list-group
   = link_to '#', class: "list-group-item list-group-item-action" do
     お知らせ
